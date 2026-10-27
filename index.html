@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 <title>coming soon</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#DEE0FE;color:#636AE7}body{min-height:100svh;overflow:hidden;font-family:"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif}main{min-height:100svh;display:grid;place-items:center}h1{margin:0;font-size:min(10.8vw,28svh);font-weight:400;white-space:nowrap}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#F7F8FD;color:#636AE7}body{min-height:100svh;overflow:hidden;font-family:"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif}main{min-height:100svh;display:grid;place-items:center}h1{margin:0;font-size:min(10.8vw,28svh);font-weight:400;white-space:nowrap}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -23,7 +23,7 @@
   let width=0,height=0,radius=90,dot=.7,particles=[],raf=0,last=0;
   const pointer={x:0,y:0,active:false};
   function render(){
-    ctx.fillStyle='#DEE0FE';ctx.fillRect(0,0,width,height);
+    ctx.fillStyle='#F7F8FD';ctx.fillRect(0,0,width,height);
     ctx.fillStyle='#636AE7';ctx.beginPath();
     for(const p of particles){ctx.moveTo(p.x+dot,p.y);ctx.arc(p.x,p.y,dot,0,Math.PI*2);}
     ctx.fill();
