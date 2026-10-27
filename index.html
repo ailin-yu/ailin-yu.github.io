@@ -1,10 +1,63 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>coming soon</title>
-  <style>html,body{margin:0;background:#fff}body{min-height:100vh;min-height:100svh;display:grid;place-items:center;color:#333;font:400 24px/1.5 system-ui,-apple-system,sans-serif}p{margin:0}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>coming soon</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#f7f7f2;color:#242522}body{min-height:100svh;overflow:hidden;font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",monospace}main{min-height:100svh;display:grid;place-items:center}h1{font-size:clamp(48px,10vw,144px);font-weight:400;letter-spacing:-.07em}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}button{position:fixed;bottom:28px;right:30px;width:36px;height:36px;border:1px solid #dadbd2;border-radius:50%;background:transparent;color:#6b6d62;font:14px monospace;cursor:pointer;opacity:0}.ready button{opacity:1}button:hover,button:focus-visible{color:#242522;border-color:#242522;outline-offset:5px}@media(max-width:600px){button{bottom:20px;right:20px}}@media(prefers-reduced-motion:reduce){button{display:none}}
+</style>
 </head>
-<body><p>coming soon</p></body>
+<body>
+<main><h1>coming soon</h1><canvas id="art" aria-hidden="true"></canvas></main>
+<button id="motion" aria-label="Pause animation" aria-pressed="false" title="Pause animation">Ⅱ</button>
+<script>
+(() => {
+  'use strict';
+  const canvas=document.getElementById('art'),ctx=canvas.getContext('2d');
+  if(!ctx)return;
+  const mask=document.createElement('canvas');mask.width=240;mask.height=112;
+  const m=mask.getContext('2d',{willReadFrequently:true});
+  m.fillStyle='#000';m.textAlign='center';m.textBaseline='middle';m.font='900 52px monospace';
+  m.fillText('COMING',120,29);m.fillText('SOON',120,85);
+  const pixels=m.getImageData(0,0,240,112).data,points=[];
+  const hash=(n)=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v)};
+  for(let y=0;y<112;y+=2)for(let x=0;x<240;x+=2){const alpha=pixels[(y*240+x)*4+3];if(alpha>100){const i=points.length;points.push({x:(x-120)/2,y:(y-56)/2,seed:hash(i+1),phase:hash(i+100)*Math.PI*2});}}
+  let w=0,h=0,unit=0,letter=0,last=0,raf=0,clock=0,previous=0,paused=false;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)'),button=document.getElementById('motion');
+  let px=0,py=0,tx=0,ty=0;
+  function resize(){w=innerWidth;h=innerHeight;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);unit=Math.min((w-40)/120,(h-120)/73,11.5);letter=unit*1.62;ctx.font=letter+'px ui-monospace, SFMono-Regular, Consolas, Liberation Mono, monospace';ctx.textAlign='center';ctx.textBaseline='middle';draw(clock);}
+  function draw(t){
+    ctx.fillStyle='#f7f7f2';ctx.fillRect(0,0,w,h);
+    const intro=reduce.matches?1:Math.min(t/1.8,1),ease=1-Math.pow(1-intro,4);
+    const breathe=reduce.matches?1:1+Math.sin(t*.75)*.012;
+    px+=(tx-px)*.035;py+=(ty-py)*.035;
+    const driftX=reduce.matches?0:px*8,driftY=reduce.matches?0:py*6;
+    for(const p of points){
+      const wave=reduce.matches?0:Math.sin(p.x*.075+p.y*.13-t*1.3);
+      const spread=(1-ease)*(12+p.seed*30)*unit;
+      const x=w/2+p.x*unit*breathe+Math.cos(p.phase)*spread+driftX;
+      const y=h/2+p.y*unit*1.18*breathe+Math.sin(p.phase)*spread+wave*unit*.35+driftY;
+      const sweep=reduce.matches?0:Math.max(0,1-Math.abs((t*17)%180-90-p.x)/14);
+      const noise=reduce.matches?0:Math.floor(t*3+p.phase);
+      const chars='+#@%*';
+      const char=chars[Math.floor(p.seed*chars.length+noise)%chars.length];
+      ctx.fillStyle='rgba(35,38,31,'+(0.57+p.seed*.4-sweep*.34)+')';
+      ctx.fillText(char,x,y);
+      if(p.seed>.94){const offset=reduce.matches?0:Math.sin(t*.6+p.phase)*2;ctx.fillStyle='rgba(83,89,73,.15)';ctx.fillText('.',x+unit*(3+offset),y+unit*(3+offset));}
+    }
+    if(!reduce.matches){for(let i=0;i<22;i++){const seed=hash(i+1000),angle=t*.07+hash(i+2000)*Math.PI*2;const rx=Math.min(w*.43,unit*66),ry=Math.min(h*.38,unit*40);const x=w/2+Math.cos(angle)*rx,y=h/2+Math.sin(angle)*ry;ctx.fillStyle='rgba(73,80,62,'+(.12+seed*.15)+')';ctx.fillText(seed>.7?'+':'.',x,y);}}
+  }
+  function frame(now){raf=0;if(paused||reduce.matches||document.hidden)return;if(previous)clock+=Math.min((now-previous)/1000,.08);previous=now;if(now-last>42){draw(clock);last=now;}raf=requestAnimationFrame(frame);}
+  function start(){if(!raf&&!paused&&!reduce.matches&&!document.hidden){previous=0;raf=requestAnimationFrame(frame);}}
+  button.addEventListener('click',()=>{paused=!paused;button.textContent=paused?'▷':'Ⅱ';button.setAttribute('aria-label',paused?'Play animation':'Pause animation');button.title=paused?'Play animation':'Pause animation';button.setAttribute('aria-pressed',String(paused));if(paused){cancelAnimationFrame(raf);raf=0;}else start();});
+  addEventListener('pointermove',e=>{tx=e.clientX/Math.max(w,1)-.5;ty=e.clientY/Math.max(h,1)-.5;},{passive:true});
+  document.addEventListener('pointerleave',()=>{tx=ty=0;});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;previous=0;}else start();});
+  reduce.addEventListener('change',()=>{cancelAnimationFrame(raf);raf=0;if(reduce.matches)draw(3);else start();});
+  addEventListener('resize',resize,{passive:true});document.documentElement.classList.add('ready');resize();if(reduce.matches)draw(3);else start();
+})();
+</script>
+</body>
 </html>
