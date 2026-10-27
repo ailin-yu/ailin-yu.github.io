@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 <title>coming soon</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#DEE0FE;color:#636AE7}body{min-height:100svh;overflow:hidden;font-family:"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif}main{min-height:100svh;display:grid;place-items:center}h1{margin:0;font-size:clamp(40px,7vw,98px);font-weight:400;white-space:nowrap}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#DEE0FE;color:#636AE7}body{min-height:100svh;overflow:hidden;font-family:"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif}main{min-height:100svh;display:grid;place-items:center}h1{margin:0;font-size:min(10.8vw,28svh);font-weight:400;white-space:nowrap}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -58,7 +58,7 @@
     width=innerWidth;height=innerHeight;
     const dpr=Math.min(devicePixelRatio||1,2);
     canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-    let size=Math.min(98,width*.115,height*.2);
+    let size=Math.min(width*.108,height*.28);
     m.font='400 '+size+'px '+family;
     const text='coming soon',maxWidth=width-48;
     if(m.measureText(text).width>maxWidth)size*=maxWidth/m.measureText(text).width;
