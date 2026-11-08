@@ -59,7 +59,7 @@ export const aidbsCase: ProjectCase = {
     ] },
   ] },
   results: { numbered: true, label: '项目结果', english: 'Results', items: [
-    { title: '获评 IDC 中国 Data Agent 领导者', outlineLabel: 'IDC 领导者认可', copy: '2026 年厂商评估中，阿里云的产品能力与战略规划评分均居首。', media: { src: '/cases/aidbs/idc-marketscape-2026.png', alt: 'IDC MarketScape 中国 Data Agent 2026 年厂商评估图：阿里云位于领导者区域', width: 930, height: 918 } },
+    { title: '登顶 IDC 中国 Data Agent 领导者', outlineLabel: 'IDC 领导者认可', copy: '2026 年厂商评估中，阿里云的产品能力与战略规划评分均居首。', media: { src: '/cases/aidbs/idc-marketscape-2026.png', alt: 'IDC MarketScape 中国 Data Agent 2026 年厂商评估图：阿里云位于领导者区域', width: 930, height: 918 } },
     { title: '2026.09 云栖大会正式发布', outlineLabel: '云栖大会发布', copy: '提炼产品价值与演示叙事，借助 Codex 编排分镜与关键帧，将视频制作周期从 30 天缩短至 7 天。', media: { src: '/cases/aidbs/yunqi-launch.webp', alt: 'AIDBS 在云栖大会正式发布的现场照片，舞台展示 AI 原生数据库服务与产品界面', width: 4000, height: 2270 } },
   ] },
 }

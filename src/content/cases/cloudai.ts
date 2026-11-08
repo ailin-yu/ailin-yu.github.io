@@ -6,7 +6,7 @@ export const cloudaiCase: ProjectCase = {
   hero: { src: '/cases/cloudai/hero.webp', alt: 'CloudAI Design 设计工程资产：模板、组件与设计规则', width: 4246, height: 1518 },
   overview: [
     'Agent 可以生成页面和代码，但真实产品的信息层级、组件用法与交互边界仍需要设计判断。CloudAI Design 将这些经验沉淀为可调用的设计能力。',
-    '研发时，Agent 根据需求调用设计规则、组件和模板，生成设计规格与页面代码；Agent 产品运行时，通过 CloudAI 提供的 GenUI 能力，根据当前任务和业务结果组织界面。',
+    '研发生产时，Agent 根据需求调用设计规则、组件和模板，生成设计规格与页面代码；Agent 产品运行时，通过 CloudAI 提供的 GenUI 能力，根据当前任务和业务结果组织界面。',
     '作为项目核心成员，我与团队从 Data Agent、AIDBS 的实践中提炼设计声明与体验范式，并建设支撑 GenUI 的组件、模板及渲染规则。',
   ],
   credits: [{ label: '作者', names: ['Yan Zhu', 'Ailin Yu'] }],

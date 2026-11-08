@@ -1,13 +1,17 @@
 .case-image-trigger { display:block; position:relative; width:100%; padding:0; border:0; border-radius:16px; background:transparent; cursor:pointer; }
 .case-image-trigger > :is(img,video,.loop-video) { display:block; width:100%; height:auto; }
 .case-image-trigger:focus-visible { outline:2px solid var(--ring); outline-offset:4px; }
-.case-image-zoom { position:fixed; inset:0; z-index:100; outline:none; }
+.case-image-zoom { position:fixed; inset:0; z-index:100; outline:none; overflow:hidden; touch-action:none; overscroll-behavior:contain; }
 .case-image-zoom-dismiss { position:absolute; inset:0; width:100%; height:100%; border:0; padding:0; background:color-mix(in srgb,var(--background) 94%,transparent); opacity:0; cursor:pointer; transition:opacity 240ms ease; }
 .case-image-zoom[data-visible="true"] .case-image-zoom-dismiss { opacity:1; }
 .case-image-zoom-dismiss:focus-visible { outline:2px solid var(--ring); outline-offset:-4px; }
-.case-image-zoom-media { position:absolute; transform-origin:center; transition:transform 240ms cubic-bezier(.22,1,.36,1); touch-action:pinch-zoom; }
+.case-image-zoom-media { position:absolute; transform-origin:center; transition:transform 240ms cubic-bezier(.22,1,.36,1); }
 #root .case-image-zoom-media { cursor:default; }
-.case-image-zoom-media > :is(img,.loop-video) { display:block; width:100%; height:100%; object-fit:contain; border-radius:var(--media-radius); }
+.case-image-zoom-content { width:100%; height:100%; transform-origin:center; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; }
+.case-image-zoom-content[data-zoomed="true"] { cursor:grab; }
+.case-image-zoom[data-closing="true"] .case-image-zoom-content { transition:transform 240ms cubic-bezier(.22,1,.36,1); }
+.case-image-zoom[data-dragging="true"] .case-image-zoom-content[data-zoomed="true"] { cursor:grabbing; }
+.case-image-zoom-content > :is(img,.loop-video) { display:block; width:100%; height:100%; object-fit:contain; border-radius:var(--media-radius); }
 /* A real preview remains underneath video, including blocked iOS autoplay. */
 .loop-video { display:block; position:relative; width:100%; overflow:hidden; border-radius:inherit; }
 #root .loop-video > img,#root .project-figure .loop-video > img { display:block; width:100%; height:100%; border-radius:inherit; }
@@ -16,4 +20,4 @@
 .case-image-zoom-media .loop-video > img { display:block; width:100%; height:100%; object-fit:contain; }
 .case-image-zoom-media .loop-video > video[controls] { opacity:1; object-fit:contain; }
 @media(max-width:767px) { .case-image-trigger { border-radius:12px; } }
-@media(prefers-reduced-motion:reduce) { .case-image-zoom-dismiss,.case-image-zoom-media { transition:none; } }
+@media(prefers-reduced-motion:reduce) { .case-image-zoom-dismiss,.case-image-zoom-media,.case-image-zoom[data-closing="true"] .case-image-zoom-content { transition:none; } }

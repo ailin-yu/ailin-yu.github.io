@@ -5,12 +5,12 @@ export const webideCase: ProjectCase = {
   hero: { src: '/home/work/webide.webp', backgroundSrc: '/home/work/BG-06.webp', alt: 'DMS WebIDE Notebook：代码编辑、SQL 查询与结果表格', width: 2880, height: 2048 },
   overview: [
     'DMS WebIDE 是一款面向企业数据开发者的云端开发工具，支持数据分析与模型开发。企业的 Data+AI 开发涉及数据接入、访问权限与计算资源配置，这些准备工作与实际开发分散在不同入口，开发者需要在配置环境、编写代码与查看结果之间往返。',
-    '我担任产品设计负责人，重点负责基于 JupyterLab 的 Notebook 编辑器体验。在已有编辑能力的基础上，将运行资源配置融入开发过程，并增强 SQL 查询结果的查找、列操作与条件筛选，让开发者在同一工作上下文中继续处理数据。',
+    '我担任产品设计负责人，重点打磨基于 JupyterLab 的 Notebook 编辑器体验，支持开发者完成数据清洗、特征处理、模型训练与评估，并直接查看图表和结果。',
   ],
   chaptersBeforeHighlights: true,
   chapters: [
     { id: 'webide-journey', label: '用户旅程', english: 'User Journey', paragraphs: [
-      '项目始于 2024 年 Q4，面向企业从数据开发、模型开发到应用开发的完整旅程，DMS WebIDE 以统一工作空间衔接数据与开发能力。下文主要介绍 Notebook 编辑器的相关设计。',
+      '项目始于 2024 年 Q4，面向企业从数据开发、模型开发到应用开发的完整旅程，DMS WebIDE 以统一工作空间衔接数据与开发能力。下文主要介绍数据开发和模型开发的相关设计。',
     ], media: [
       { src: '/cases/webide/user-journey-light.svg', darkSrc: '/cases/webide/user-journey-dark.svg', layout: 'wide-diagram', alt: 'DMS 企业 AI 开发用户旅程：DataOps、MLOps 与 LLMOps 七个阶段的需求痛点及产品体验', width: 1440, height: 535, caption: '企业 AI 开发核心旅程 · Core User Journey' },
     ] },
