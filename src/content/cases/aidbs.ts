@@ -30,13 +30,13 @@ export const aidbsCase: ProjectCase = {
   ],
   highlights: { label: '关键设计', english: 'Design Highlights', items: [
     { id: 'aidbs-unified-entry', title: '以统一入口串联专业 Agent', outlineLabel: '统一任务入口', paragraphs: [
-      "分析、运维、数据准备等能力由不同团队分别建设，用户面对的却是一个完整任务。将专业 Agent、数据与资产、开发与托管能力收拢到统一导航，结合自然语言任务入口，让用户既能直接描述需求，也能主动找到所需工具。",
-      "在保留专业能力分工的同时，统一各子 Agent 的导航、页面布局与交互规则，并在代码仓库中与产研共同推进实现，支撑 34 个功能模块的体验建设。",
+      "用户完成一个复杂任务时，往往需要串联数据准备、分析和管理等多种能力。AIDBS 将不同团队建设的专业 Agent、数据资产、开发与托管工具整合到同一入口，用户可以用自然语言描述需求，也能按需查找工具。",
+      "各子 Agent 保留专业分工，导航、布局和交互规则保持一致。设计与产研在同一代码仓库中协作，支撑 34 个功能模块的体验建设。",
     ], media: [
       { src: '/cases/aidbs/unified-navigation.mp4', reducedMotionSrc: '/cases/aidbs/unified-navigation-still.webp', alt: "AIDBS 统一入口与能力导航：集中展示专业 Agent、数据与资产、开发与托管工具", width: 2380, height: 1486 },
     ] },
     { id: 'aidbs-genui', title: '以 GenUI 动态组织界面体验', outlineLabel: 'GenUI 动态界面', paragraphs: [
-      '根据任务意图和当前状态动态组织界面：口径不明时呈现澄清选项，异常待处理时组合诊断依据与操作卡片，需要权衡时展示方案比较。用户的选择和确认返回 Agent 链路，推动后续处理，界面随任务进展继续更新。',
+      '任务推进时，用户需要的信息和操作也在变化：有时要补充业务口径，有时要核对诊断依据，或比较不同方案。GenUI 技术为这些需求提供了很好的解决方案，让用户可以在对话中完成判断与操作。Agent 根据用户的选择继续处理任务，界面也随之更新。',
     ], subsections: [
       { id: 'aidbs-genui-clarification', title: '以主动澄清对齐分析口径', outlineLabel: '主动澄清口径', paragraphs: [
         "在数据分析场景中，用户希望基于业务数据计算指标。以复购率分析为例，找到订单表，并不意味着已经明确复购率该怎么算：有效订单范围、按下单还是支付时间统计，以及怎样定义复购，都会改变结果。让 Agent 在识别到业务口径缺失时主动澄清，将影响结果的条件拆成逐步确认的 GenUI 卡片。",
