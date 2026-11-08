@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { LoopVideo } from './LoopVideo'
 import { ProgressiveImage } from './ProgressiveImage'
 import { imageAsset } from '@/lib/media-images'
+import { useImageGestures } from './useImageGestures'
 import '@/styles/case-image-viewer.css'
 
 type ImageProps = { src: string; alt: string; width?: number; height?: number; eager?: boolean; imageClassName?: string; fullResolution?: boolean }
@@ -16,6 +17,7 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
   const gap = innerWidth < 768 ? 16 : 40
   const ratio = Math.min((innerWidth - gap * 2) / (width || 1600), (innerHeight - gap * 2) / (height || 900), 1)
   const target = { width: (width || 1600) * ratio, height: (height || 900) * ratio }
+  const gestures = useImageGestures({ viewportWidth: innerWidth, viewportHeight: innerHeight, ...target, gap })
   const left = (innerWidth - target.width) / 2, top = (innerHeight - target.height) / 2
   const transform = `translate(${origin.x + origin.width / 2 - innerWidth / 2}px,${origin.y + origin.height / 2 - innerHeight / 2}px) scale(${origin.width / target.width})`
   const style: CSSProperties = { left, top, ...target, transform: visible ? 'translate(0,0) scale(1)' : transform }
@@ -68,15 +70,20 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
 
   useEffect(() => {
     if (!closing) return
+    gestures.reset()
     setVisible(false)
     const timer = window.setTimeout(onClose, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240)
     return () => clearTimeout(timer)
-  }, [closing, onClose])
+  }, [closing, onClose, gestures.reset])
 
-  return createPortal(<div className="case-image-zoom" ref={root} role="region" aria-label={alt} tabIndex={-1} data-visible={visible}>
+  return createPortal(<div className="case-image-zoom" ref={root} role="region" aria-label={alt} aria-keyshortcuts="+ - 0 Escape" tabIndex={-1} data-visible={visible}
+    data-zoom-scale={gestures.transform.scale.toFixed(3)} data-pan-x={gestures.transform.x.toFixed(2)} data-pan-y={gestures.transform.y.toFixed(2)}
+    data-dragging={gestures.dragging} data-closing={closing} {...gestures.handlers}>
     <button type="button" className="case-image-zoom-dismiss" aria-label="缩小图片" onClick={dismiss} />
     <div className="case-image-zoom-media" style={style}>
-      {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} controls /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution previewSrc={origin.preview} draggable={false} />}
+      <div className="case-image-zoom-content" data-zoomed={gestures.transform.scale > 1} style={{ transform: `translate(${gestures.transform.x}px,${gestures.transform.y}px) scale(${gestures.transform.scale})` }}>
+        {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} controls /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution previewSrc={origin.preview} draggable={false} />}
+      </div>
     </div>
   </div>, document.body)
 }

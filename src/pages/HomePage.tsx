@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from 'react'
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useInView, useReducedMotion } from 'motion/react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/portfolio/ThemeProvider'
@@ -126,28 +126,32 @@ function HomeExperience() {
   </section>
 }
 function HomeContact() {
-  const [feedback, setFeedback] = useState<{ message: string; ok: boolean } | null>(null)
+  type ContactTarget = 'wechat' | 'email'
+  const [feedback, setFeedback] = useState<{ target: ContactTarget; message: string; ok: boolean } | null>(null)
+  const copySequence = useRef(0)
   useEffect(() => {
     if (!feedback) return
     const timer = window.setTimeout(() => setFeedback(null), 2400)
     return () => window.clearTimeout(timer)
   }, [feedback])
-  const copy = async (value: string, label: string) => {
+  const copy = async (value: string, target: ContactTarget) => {
+    const sequence = ++copySequence.current
+    setFeedback(null)
     try {
       await navigator.clipboard.writeText(value)
-      setFeedback({ message: `${label}已复制`, ok: true })
+      if (sequence === copySequence.current) setFeedback({ target, message: '已复制✅', ok: true })
     } catch {
-      setFeedback({ message: '未能复制，请重试或手动复制。', ok: false })
+      if (sequence === copySequence.current) setFeedback({ target, message: '未能复制，请重试或手动复制。', ok: false })
     }
   }
+  const status = (target: ContactTarget) => <span className="figma-contact-feedback" role="status" aria-live="polite" aria-atomic="true" data-visible={feedback?.target === target} data-success={feedback?.target === target && feedback.ok}>{feedback?.target === target ? feedback.message : ''}</span>
   return <footer className="figma-contact" id="contact" aria-labelledby="figma-contact-title">
     <div className="figma-section-heading"><SectionTitle text="Contact Me" id="figma-contact-title" reveal /><p className="figma-contact-invitation">欢迎一起聊聊产品、设计，或是一起喝杯咖啡～</p></div>
     <div className="figma-contact-row">
       <div className="figma-contact-links">
-        <button type="button" onClick={() => void copy('Yerin20', '微信号')} aria-label="复制微信号 Yerin20" title="点击复制微信号"><span className="figma-contact-icon figma-contact-icon-wechat" aria-hidden="true" /><span>Yerin20</span></button>
-        <button type="button" onClick={() => void copy('ailinyu68@gmail.com', '邮箱')} aria-label="复制邮箱 ailinyu68@gmail.com" title="点击复制邮箱"><span className="figma-contact-icon figma-contact-icon-email" aria-hidden="true" /><span>ailinyu68@gmail.com</span></button>
+        <span className="figma-contact-item" data-contact="wechat"><button type="button" onClick={() => void copy('Yerin20', 'wechat')} aria-label="复制微信号 Yerin20" title="点击复制微信号"><span className="figma-contact-icon figma-contact-icon-wechat" aria-hidden="true" /><span>Yerin20</span></button>{status('wechat')}</span>
+        <span className="figma-contact-item" data-contact="email"><button type="button" onClick={() => void copy('ailinyu68@gmail.com', 'email')} aria-label="复制邮箱 ailinyu68@gmail.com" title="点击复制邮箱"><span className="figma-contact-icon figma-contact-icon-email" aria-hidden="true" /><span>ailinyu68@gmail.com</span></button>{status('email')}</span>
       </div>
-      <span className="figma-contact-feedback" role="status" aria-live="polite" aria-atomic="true" data-visible={!!feedback} data-success={feedback?.ok}>{feedback?.ok && <Check size={16} aria-hidden="true" />}{feedback?.message}</span>
       <small>© 2026 Ailin Yu</small>
     </div>
   </footer>

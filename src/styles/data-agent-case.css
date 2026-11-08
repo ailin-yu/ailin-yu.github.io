@@ -157,6 +157,7 @@
  .da-strategy-summary { margin-top:24px !important; }
  .da-strategy-grid { grid-template-columns:1fr; gap:40px; margin-top:40px; }
  .da-strategy-item h3,.da-design-title { font-size:var(--case-mobile-heading-size); line-height:36px; }
+ .data-agent-case .da-design-title { align-items:baseline; }
  .da-strategy-item > p { min-height:0; margin-top:12px; }
  .da-strategy-item > .da-media-slot { margin-top:20px; }
  .da-media-slot { border-radius:12px; }
