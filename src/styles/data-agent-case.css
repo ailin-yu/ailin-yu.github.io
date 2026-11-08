@@ -417,3 +417,10 @@
 @media (max-width:767px) { .aidbs-challenge-illustration { border-radius:12px; } }
 
 .project-copy-connector { display:block; width:20px; height:20px; margin:12px 0; stroke-width:1.25; color:var(--case-faint); }
+
+/* Mobile reading weight applies across every shared case template. */
+@media (max-width:767px) {
+  .data-agent-case { font-weight:400; }
+  #root .data-agent-case :is(p,li,figcaption,td) { font-weight:400; }
+  #root .data-agent-case :is(p,li,figcaption,td) :is(strong,b) { font-weight:inherit; }
+}

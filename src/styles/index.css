@@ -2,8 +2,11 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "./tokens.generated.css";
+@import "./chinese-fonts.css";
 
 :root {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   color-scheme: light;
   --radius: 0.5rem;
 }
