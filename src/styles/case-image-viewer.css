@@ -7,7 +7,7 @@
 .case-image-zoom-dismiss:focus-visible { outline:2px solid var(--ring); outline-offset:-4px; }
 .case-image-zoom-media { position:absolute; transform-origin:center; transition:transform 240ms cubic-bezier(.22,1,.36,1); }
 #root .case-image-zoom-media { cursor:default; }
-.case-image-zoom-content { width:100%; height:100%; transform-origin:center; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; }
+.case-image-zoom-content { width:100%; height:100%; transform-origin:center; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; }
 .case-image-zoom-content[data-zoomed="true"] { cursor:grab; }
 .case-image-zoom[data-closing="true"] .case-image-zoom-content { transition:transform 240ms cubic-bezier(.22,1,.36,1); }
 .case-image-zoom[data-dragging="true"] .case-image-zoom-content[data-zoomed="true"] { cursor:grabbing; }

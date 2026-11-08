@@ -75,3 +75,76 @@ test('cancellation and stray pointers cannot keep dragging or corrupt the state'
   assert.equal(c.move(1, { x: 900, y: 900 }), false)
   assert.deepEqual({ ...c.state }, before)
 })
+
+const touchSource = stripTypeScriptTypes(readFileSync(new URL('../src/lib/image-touch-events.ts', import.meta.url), 'utf8'))
+  .replace(/^import .*$/gm, '').replace('export function bindImageTouchEvents', 'function bindImageTouchEvents')
+const bindTouches = runInNewContext(`${touchSource}\nbindImageTouchEvents`)
+const touch = (identifier, clientX, clientY) => ({ identifier, clientX, clientY })
+function touchFixture() {
+  const root = new EventTarget(), controller = create()
+  const media = { closest: selector => selector === '.case-image-zoom-content' ? media : null }
+  const margin = { closest: () => null }
+  const video = { closest: selector => selector === '.case-image-zoom-content' ? media : video, getBoundingClientRect: () => ({ bottom: 750, height: 700 }) }
+  const result = { updates: 0, dragging: false, suppressed: false }
+  const cleanup = bindTouches(root, controller, {
+    update: () => result.updates++, dragging: value => { result.dragging = value },
+    suppressClick: () => { result.suppressed = true }, allowMarginTap: () => { result.suppressed = false },
+  })
+  const send = (type, touches, changedTouches = touches, target = media) => {
+    const event = new Event(type, { cancelable: true })
+    Object.defineProperties(event, { touches: { value: touches }, changedTouches: { value: changedTouches }, target: { value: target } })
+    root.dispatchEvent(event)
+    return event
+  }
+  return { controller, media, margin, video, result, send, cleanup }
+}
+
+test('native touch events pinch, then keep the remaining finger dragging horizontally', () => {
+  const f = touchFixture()
+  assert.equal(f.send('touchstart', [touch(10, 150, 400)]).defaultPrevented, true)
+  f.send('touchstart', [touch(10, 150, 400), touch(20, 250, 400)], [touch(20, 250, 400)])
+  assert.equal(f.send('touchmove', [touch(10, 100, 400), touch(20, 300, 400)]).defaultPrevented, true)
+  near(f.controller.state.scale, 2)
+  f.send('touchend', [touch(10, 100, 400)], [touch(20, 300, 400)])
+  f.send('touchmove', [touch(10, 160, 400)])
+  near(f.controller.state.scale, 2); near(f.controller.state.x, 60)
+  assert.equal(f.result.suppressed, true)
+  f.send('touchend', [], [touch(10, 160, 400)])
+  assert.equal(f.controller.pointers.size, 0); assert.equal(f.result.dragging, false)
+  assert.ok(f.result.updates > 0)
+  f.cleanup()
+})
+
+test('a pinch beginning in the margin is owned, while a fresh blank tap still closes', () => {
+  const f = touchFixture()
+  assert.equal(f.send('touchstart', [touch(1, 20, 400)], undefined, f.margin).defaultPrevented, false)
+  assert.equal(f.send('touchstart', [touch(1, 20, 400), touch(2, 200, 400)], [touch(2, 200, 400)]).defaultPrevented, true)
+  f.send('touchmove', [touch(1, 20, 400), touch(2, 380, 400)])
+  near(f.controller.state.scale, 2)
+  assert.equal(f.send('touchend', [], [touch(1, 20, 400), touch(2, 380, 400)]).defaultPrevented, true)
+  const tap = touch(3, 20, 200)
+  assert.equal(f.send('touchstart', [tap], undefined, f.margin).defaultPrevented, false)
+  assert.equal(f.result.suppressed, false)
+  assert.equal(f.send('touchend', [], [tap], f.margin).defaultPrevented, false)
+  f.cleanup()
+})
+
+test('native video controls receive taps and seek gestures without interference', () => {
+  const f = touchFixture(), finger = touch(1, 200, 730)
+  assert.equal(f.send('touchstart', [finger], undefined, f.video).defaultPrevented, false)
+  assert.equal(f.controller.pointers.size, 0)
+  assert.equal(f.send('touchmove', [touch(1, 260, 730)], undefined, f.video).defaultPrevented, false)
+  assert.equal(f.send('touchend', [], [finger], f.video).defaultPrevented, false)
+  f.cleanup()
+})
+
+test('native touch cancellation and unmount remove active touches and listeners', () => {
+  const f = touchFixture(), finger = touch(1, 150, 400)
+  f.send('touchstart', [finger])
+  f.send('touchcancel', [], [finger])
+  assert.equal(f.controller.pointers.size, 0); assert.equal(f.result.dragging, false)
+  f.send('touchstart', [finger]); f.cleanup()
+  assert.equal(f.controller.pointers.size, 0)
+  assert.equal(f.send('touchstart', [finger]).defaultPrevented, false)
+  assert.equal(f.controller.pointers.size, 0)
+})
