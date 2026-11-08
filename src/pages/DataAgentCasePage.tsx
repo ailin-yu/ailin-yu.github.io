@@ -52,7 +52,7 @@ export default function DataAgentCasePage() {
             <SectionTitle>Design Highlights</SectionTitle>
             <section className="da-design da-apps" id="da-apps">
               <DesignTitle number="01">提供开箱即用的应用，降低使用门槛</DesignTitle>
-              <div className="da-design-copy"><p>首页提供输入引导、示例数据和演示案例，帮助用户快速了解并体验产品能力。</p><p>将报告主题、视觉规范与分析编排经验沉淀为 Skill，内置于网页报告、信息图、PPT 等开箱即用的应用，帮助用户以更低的试错成本，获得分析逻辑清晰、视觉表达成熟的结果。</p></div>
+              <div className="da-design-copy"><p>首页通过输入引导、示例数据和演示案例，让用户知道可以问什么、能获得怎样的结果，更容易开始第一次分析。</p><p>为了让用户从「开始分析」顺利走向「获得成果」，将报告主题、视觉规范与分析编排经验沉淀为 Skill，内置于网页报告、信息图、PPT 等开箱即用的应用，以更低的试错成本，生成分析逻辑清晰、视觉表达成熟的结果。</p></div>
               <figure className="project-figure da-apps-overview"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/apps-overview-still.webp' : '/cases/data-agent/apps-overview.mp4'} alt="Data Agent 开箱应用总览" width={2629} height={1478} /></figure>
               <div className="da-media-grid da-apps-examples">{applicationExamples.map(item => <figure className={`project-figure${item.bordered ? ' da-app-example-bordered' : ''}`} key={item.name} data-application={item.name}><ZoomableCaseImage src={`/cases/data-agent/${item.name}${reducedMotion ? '-still.webp' : '.mp4'}`} alt={item.alt} width={item.width} height={item.height} /><figcaption>/ {item.caption}</figcaption></figure>)}</div>
             </section>
