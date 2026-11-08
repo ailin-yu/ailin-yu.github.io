@@ -1,0 +1,88 @@
+@import "tailwindcss" source("../");
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./tokens.generated.css";
+
+:root {
+  color-scheme: light;
+  --radius: 0.5rem;
+}
+
+[lang="en"] { font-weight: 400; }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-primary-disabled: var(--primary-disabled);
+  --color-primary-disabled-foreground: var(--primary-disabled-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --font-sans: var(--font-reading-mixed);
+  --font-display: var(--font-display-en);
+  --font-serif: var(--font-heading-zh);
+  --text-xs: var(--type-zh-body-small-size);
+  --text-xs--line-height: var(--type-zh-body-small-line);
+  --text-sm: var(--type-zh-body-small-size);
+  --text-sm--line-height: var(--type-zh-body-small-line);
+  --text-base: var(--type-zh-body-default-size);
+  --text-base--line-height: var(--type-zh-body-default-line);
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: calc(var(--radius) - 0.125rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-reading-mixed);
+    font-size: var(--type-zh-body-default-size);
+    line-height: var(--type-zh-body-default-line);
+    margin: 0;
+  }
+  button, [role="button"] { cursor: pointer; }
+  main[tabindex="-1"]:focus { outline: none; }
+  ::selection { background: var(--brand-2); color: var(--gray-12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.theme-toggle { display:grid; place-items:center; width:44px; height:44px; border-radius:50%; color:var(--foreground); background:transparent; transition:background .2s,transform .3s; }
+.theme-toggle:hover { background:var(--muted); transform:rotate(-12deg); }
+.theme-toggle:focus-visible { outline:2px solid var(--ring); outline-offset:2px; }
+@media(max-width:760px) { .site-header nav { gap:12px; } .theme-toggle { width:36px; min-width:36px; } }
+
+/* Shared image treatment; original paper-cut SVG contours retain their shape. */
+:root { --media-radius:16px; }
+#root :is(img,video) { border-radius:var(--media-radius); }
+#root :is(.home-product-preview,.aidbs-film-stage,.da-film-stage,.student-comparison-image,.da-workbench-image) { border-radius:var(--media-radius); overflow:hidden; }
+.case-story-lead { max-width:48ch; color:var(--body); margin:12px 0 0 !important; font-size:var(--type-zh-body-default-size); line-height:var(--type-zh-body-default-line); }
+.case-story-note { max-width:56ch; color:var(--muted-foreground); margin:10px 0 20px !important; font-size:var(--type-zh-body-small-size); line-height:var(--type-zh-body-small-line); }
+@media(max-width:760px) { :root { --media-radius:12px; } }

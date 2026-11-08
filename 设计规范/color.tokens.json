@@ -1,0 +1,278 @@
+{
+  "source": {
+    "fileKey": "QVjaUsoQt69LeMckHJnz4Q",
+    "nodeId": "35:1427",
+    "fileName": "简历",
+    "version": "2415053088837426651",
+    "url": "https://www.figma.com/design/QVjaUsoQt69LeMckHJnz4Q/简历?node-id=35-1427"
+  },
+  "decisions": {
+    "brandPalette": "user-confirmed",
+    "neutralDirection": "user-confirmed cool gray",
+    "neutralRamp": "user-confirmed 2026-10-27",
+    "roleMapping": "updated 2026-10-28: brand violet and neutral primary actions are separate",
+    "primaryAction": "user-confirmed cool-gray near-black 2026-10-28",
+    "darkMode": "user-requested 2026-11-03; cool gray surfaces, preserved raw brand/neutral swatches",
+    "homepage": "2026-11-06 supplied Figma 95:740; scoped roles preserve other pages"
+  },
+  "brand": [
+    {
+      "step": 1,
+      "hex": "#F7F7FF",
+      "sourceNode": "35:1425"
+    },
+    {
+      "step": 2,
+      "hex": "#DEE0FE",
+      "sourceNode": "35:1426"
+    },
+    {
+      "step": 3,
+      "hex": "#C4C8FD",
+      "sourceNode": "35:1428"
+    },
+    {
+      "step": 4,
+      "hex": "#AAB1FC",
+      "sourceNode": "35:1429"
+    },
+    {
+      "step": 5,
+      "hex": "#9099FB",
+      "sourceNode": "35:1430"
+    },
+    {
+      "step": 6,
+      "hex": "#7881F4",
+      "sourceNode": "35:1431"
+    },
+    {
+      "step": 7,
+      "hex": "#636AE7",
+      "sourceNode": "35:1432"
+    },
+    {
+      "step": 8,
+      "hex": "#4950E0",
+      "sourceNode": "35:1433"
+    },
+    {
+      "step": 9,
+      "hex": "#3A3FC1",
+      "sourceNode": "35:1434"
+    },
+    {
+      "step": 10,
+      "hex": "#2E3495",
+      "sourceNode": "35:1435"
+    },
+    {
+      "step": 11,
+      "hex": "#25296B",
+      "sourceNode": "35:1436"
+    },
+    {
+      "step": 12,
+      "hex": "#1A1C49",
+      "sourceNode": "35:1441"
+    }
+  ],
+  "coolGray": [
+    {
+      "step": 1,
+      "hex": "#FAFBFD"
+    },
+    {
+      "step": 2,
+      "hex": "#F4F5F8"
+    },
+    {
+      "step": 3,
+      "hex": "#E9EBF2"
+    },
+    {
+      "step": 4,
+      "hex": "#DCE0E9"
+    },
+    {
+      "step": 5,
+      "hex": "#C1C7D5"
+    },
+    {
+      "step": 6,
+      "hex": "#A3ABBD"
+    },
+    {
+      "step": 7,
+      "hex": "#7F899D"
+    },
+    {
+      "step": 8,
+      "hex": "#626C82"
+    },
+    {
+      "step": 9,
+      "hex": "#495269"
+    },
+    {
+      "step": 10,
+      "hex": "#323A4D"
+    },
+    {
+      "step": 11,
+      "hex": "#232A3B"
+    },
+    {
+      "step": 12,
+      "hex": "#171C2A"
+    }
+  ],
+  "roles": {
+    "brand": "{brand.7}",
+    "brandSurface": "{brand.1}",
+    "primary": "{coolGray.12}",
+    "primaryHover": "{coolGray.11}",
+    "primaryPressed": "{coolGray.10}",
+    "primaryForeground": "{roles.surface}",
+    "primaryDisabled": "{coolGray.3}",
+    "primaryDisabledForeground": "{coolGray.8}",
+    "link": "{brand.8}",
+    "linkHover": "{brand.9}",
+    "background": "{coolGray.1}",
+    "surface": "#FFFFFF",
+    "foreground": "{coolGray.12}",
+    "body": "{coolGray.10}",
+    "card": "{roles.surface}",
+    "cardForeground": "{roles.foreground}",
+    "popover": "{roles.surface}",
+    "popoverForeground": "{roles.foreground}",
+    "secondary": "{coolGray.3}",
+    "secondaryForeground": "{coolGray.12}",
+    "muted": "{coolGray.2}",
+    "mutedForeground": "{coolGray.8}",
+    "accent": "{coolGray.3}",
+    "accentForeground": "{coolGray.12}",
+    "border": "{coolGray.4}",
+    "input": "{coolGray.7}",
+    "ring": "{coolGray.8}",
+    "destructive": "#B42335",
+    "brandSoft": "{brand.2}",
+    "brandBorder": "{brand.3}",
+    "paper": "#FFFFFF",
+    "plantShadow": "{brand.9}",
+    "plantDeepShadow": "{brand.11}",
+    "homeBackground": "#FAFAFA",
+    "homeForeground": "#111827",
+    "homeMuted": "#6B7280",
+    "homeFaint": "#9CA3AF",
+    "homeChip": "#E5E7EB",
+    "homeKeywordSurface": "#D1D5DB",
+    "homeWorkShadow": "#000000",
+    "homeLine": "#D1D5DB",
+    "homeToolSurface": "{roles.surface}",
+    "homeToolInset": "#E2E4FE",
+    "caseBackground": "{roles.homeBackground}",
+    "caseForeground": "{roles.homeForeground}",
+    "caseBody": "#374151",
+    "caseMuted": "{roles.homeMuted}",
+    "caseFaint": "{roles.homeFaint}",
+    "casePlaceholder": "#F3F4F6",
+    "caseCardShadow": "{coolGray.12}",
+    "caseCopyright": "#000000",
+    "glassHighlight": "#FFFFFF",
+    "caseStrategySurface": "{roles.casePlaceholder}",
+    "caseStrategyHighlight": "{roles.caseForeground}",
+    "caseStrategyEdge": "{roles.caseFaint}",
+    "caseCodeBackground": "{coolGray.12}",
+    "caseCodeForeground": "{coolGray.2}",
+    "caseCodeMuted": "{coolGray.5}",
+    "caseCodeBorder": "{coolGray.10}"
+  },
+  "contrastChecks": [
+    {
+      "foregroundRole": "primaryForeground",
+      "backgroundRole": "primary",
+      "foreground": "#FFFFFF",
+      "background": "#171C2A",
+      "ratio": 16.99
+    },
+    {
+      "foregroundRole": "primaryForeground",
+      "backgroundRole": "primaryHover",
+      "foreground": "#FFFFFF",
+      "background": "#232A3B",
+      "ratio": 14.33
+    },
+    {
+      "foregroundRole": "mutedForeground",
+      "backgroundRole": "background",
+      "foreground": "#626C82",
+      "background": "#FAFBFD",
+      "ratio": 5.09
+    }
+  ],
+  "notes": [
+    "Brand and coolGray arrays hold the raw swatches; roles reference them and are generated directly as CSS variables with matching names.",
+    "Primary buttons use cool gray near-black. Brand violet is retained for visual accents, flowers and designated links, not the default filled button.",
+    "Tailwind @theme connects the existing CSS variables to utility names; it does not maintain another palette or redefine semantic roles."
+  ],
+  "canonicalDesignDocument": "design.md",
+  "roleStatus": {
+    "primary": "user-confirmed cool-gray near-black",
+    "primaryHover": "implementation state from the existing cool-gray ramp",
+    "primaryDisabled": "implementation state from the existing cool-gray ramp",
+    "destructive": "provisional UI error color; not part of the brand ramp"
+  },
+  "modes": {
+    "dark": {
+      "roles": {
+        "brand": "{brand.5}",
+        "brandSurface": "#202238",
+        "brandSoft": "#2D304C",
+        "brandBorder": "#414668",
+        "primary": "{coolGray.2}",
+        "primaryHover": "{coolGray.4}",
+        "primaryPressed": "{coolGray.5}",
+        "primaryForeground": "{coolGray.12}",
+        "primaryDisabled": "#303747",
+        "primaryDisabledForeground": "#A9B1C3",
+        "link": "{brand.4}",
+        "linkHover": "{brand.3}",
+        "background": "#11141C",
+        "surface": "#1B1F2B",
+        "foreground": "#EBEDF3",
+        "body": "#CCD1DD",
+        "card": "{roles.surface}",
+        "cardForeground": "{roles.foreground}",
+        "popover": "{roles.surface}",
+        "popoverForeground": "{roles.foreground}",
+        "secondary": "#282E3E",
+        "secondaryForeground": "{roles.foreground}",
+        "muted": "#191E2A",
+        "mutedForeground": "#A9B1C3",
+        "accent": "#282E3E",
+        "accentForeground": "{roles.foreground}",
+        "border": "#353D50",
+        "input": "#626C82",
+        "ring": "#B8C0D1",
+        "destructive": "#FF9DAA",
+        "plantShadow": "{brand.4}",
+        "plantDeepShadow": "{brand.2}",
+        "homeBackground": "{roles.background}",
+        "homeForeground": "{roles.foreground}",
+        "homeMuted": "{roles.mutedForeground}",
+        "homeFaint": "{roles.mutedForeground}",
+        "homeChip": "{roles.secondary}",
+        "homeKeywordSurface": "{coolGray.9}",
+        "homeLine": "{roles.border}",
+        "homeToolInset": "{roles.brandBorder}",
+        "caseBody": "{roles.body}",
+        "casePlaceholder": "{roles.muted}",
+        "caseCopyright": "{roles.foreground}",
+        "glassHighlight": "{coolGray.8}",
+        "caseStrategyHighlight": "{roles.caseMuted}",
+        "caseStrategyEdge": "{coolGray.7}"
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "title": "企业 AI 开发核心旅程",
+  "english": "Core User Journey",
+  "source": "DMS WebIDE 文章配图 1",
+  "phases": [
+    {
+      "name": "DataOps",
+      "label": "数据开发",
+      "start": 0,
+      "span": 2
+    },
+    {
+      "name": "MLOps",
+      "label": "模型开发",
+      "start": 2,
+      "span": 2
+    },
+    {
+      "name": "LLMOps",
+      "label": "应用开发",
+      "start": 4,
+      "span": 3
+    }
+  ],
+  "stages": [
+    {
+      "title": "环境准备",
+      "pains": [
+        "业务需求响应慢",
+        "库表权限管理复杂"
+      ],
+      "experience": [
+        "工作空间引导",
+        "统一计算资源配置",
+        "人员权限管理"
+      ]
+    },
+    {
+      "title": "数据准备",
+      "pains": [
+        "跨库、跨引擎开发分散",
+        "库表与权限信息复杂"
+      ],
+      "experience": [
+        "统一数据目录"
+      ]
+    },
+    {
+      "title": "模型开发",
+      "pains": [
+        "缺少 SparkSQL 开发支持",
+        "Jupyter 与 IDE 体验割裂"
+      ],
+      "experience": [
+        "Notebook 开发",
+        "自动化任务编排"
+      ]
+    },
+    {
+      "title": "模型部署",
+      "pains": [
+        "模型部署能力不足"
+      ],
+      "experience": [
+        "模型在线服务"
+      ]
+    },
+    {
+      "title": "知识库构建",
+      "pains": [
+        "结构化 / 非结构化数据",
+        "解析与 RAG 检索",
+        "向量库数据同步"
+      ],
+      "experience": [
+        "一体化数据准备"
+      ]
+    },
+    {
+      "title": "应用编排",
+      "pains": [
+        "资源类型多",
+        "开通与管理成本高"
+      ],
+      "experience": [
+        "Dify 应用编排",
+        "资源开通与部署"
+      ]
+    },
+    {
+      "title": "Agent 服务",
+      "pains": [
+        "应用效果难直观感知",
+        "体验成本高"
+      ],
+      "experience": [
+        "Agent 服务"
+      ]
+    }
+  ]
+}

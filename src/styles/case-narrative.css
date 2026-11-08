@@ -1,0 +1,23 @@
+/* Short editorial bridges connect the real media and the product decisions. */
+.case-direction { margin-block:70px 80px; }
+.case-direction > .case-direction-label { display:block; margin:0 0 16px; font-size:var(--type-zh-body-small-size); line-height:1.7; color:var(--muted-foreground); }
+.case-direction > h2 { max-width:850px; font-family:var(--font-heading-zh); font-size:var(--type-zh-heading-h2-size); font-weight:400; letter-spacing:-.025em; line-height:1.5; margin:0; }
+.case-direction-copy { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:27px; }
+.case-direction-copy p { margin:0; font-size:var(--type-zh-body-default-size); line-height:1.9; color:var(--body); }
+.case-direction-copy strong { display:block; color:var(--foreground); font-weight:500; margin-bottom:9px; }
+.case-decision-note { max-width:880px; color:var(--body); font-size:var(--type-zh-body-default-size); line-height:1.9; margin-block:24px; }
+.cloudai-design-points { display:flex; flex-wrap:wrap; gap:8px 20px; padding:0; margin:16px 0 0; list-style:none; color:var(--body); font-size:var(--type-zh-body-small-size); line-height:1.7; }
+.cloudai-design-points li { display:flex; align-items:center; gap:9px; }
+.cloudai-design-points li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--brand); }
+.cloudai-design-point-label { margin-top:16px; color:var(--muted-foreground); font-size:var(--type-zh-body-small-size); line-height:1.7; }
+@media (max-width:760px) {
+ .case-direction { margin-block:40px 48px; }
+ .case-direction > h2 { font-size:var(--type-zh-heading-h3-size); }
+ .case-direction-copy { grid-template-columns:1fr; gap:22px; margin-top:22px; }
+ .case-decision-note { margin-block:18px; }
+}
+
+.cloudai-context-intro { margin-block:28px 38px; }
+.cloudai-context-intro .case-decision-note { max-width:760px; margin-top:18px; }
+.cloudai-context-details { margin-top:42px; }
+@media(max-width:760px) { .cloudai-context-intro { margin-block:18px 28px; } .cloudai-context-details { margin-top:30px; } }

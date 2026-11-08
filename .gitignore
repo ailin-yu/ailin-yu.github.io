@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.local
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+归档/
+设计探索/
+素材/
+*.blend1
+
+设计预览/
+*.zip

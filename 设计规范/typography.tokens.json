@@ -1,0 +1,1765 @@
+{
+  "$extensions": {
+    "io.github.ailin-yu.portfolio": {
+      "version": "1.1.0",
+      "date": "2026-11-07",
+      "stage": "local-implementation",
+      "confirmedByUser": {
+        "english": "Georgia for all headings, body, navigation and captions",
+        "chinese": "Songti SC / 宋体 for all headings, body, navigation and captions",
+        "minimumReadingSizePx": 14,
+        "englishWeight": "Regular / 400, including Latin runs inside bold Chinese paragraphs"
+      },
+      "designDefaults": {
+        "chineseSongtiFace": "Songti SC / 宋体-简",
+        "typeScale": "v1 design baseline; sizes may be adjusted after real layout review without going below the reading minimum",
+        "bodyDefaultPx": 16,
+        "articleDefault": "body.default (16px)",
+        "articleLarge": "18px is an optional unconfirmed exploration, never automatically applied to case-study prose"
+      },
+      "viewports": {
+        "mobile": "0–767 CSS px",
+        "tablet": "768–1023 CSS px",
+        "desktop": "1024 CSS px and above"
+      },
+      "implementationNotes": [
+        "px are design reference units. Implement text sizes in rem using the browser default 16px reference; preserve user zoom and text-size preferences.",
+        "Breakpoints describe type modes, not a required website framework. Fluid interpolation is optional within the defined endpoints.",
+        "2026-11-07 user override: every semantic font stack starts with Georgia for Latin glyphs and falls back to Songti SC for Chinese. Applies to headings, prose, top project menu, side outline, controls and captions. Keep type sizes, weights and ASCII rendering behavior independent.",
+        "No font files are bundled by these tokens. Webfont resources and cross-platform fallbacks are resolved during implementation; do not copy system font files into the public site.",
+        "The approved existing Songti dot-text interaction stays a separate effect; this file does not replace its font or motion parameters.",
+        "Use body.article (alias of body.default) for case-study prose. body.articleLarge is exploratory and must not be substituted automatically.",
+        "The local Vite/React app generates CSS from these tokens via scripts/design-tokens.mjs. Keep GitHub publication separate from local development.",
+        "English always uses Georgia Regular, including Latin substrings in bold Chinese prose; the local Latin face mapping does not change Chinese weight."
+      ],
+      "sources": {
+        "appleFonts": "https://developer.apple.com/fonts/system-fonts/"
+      },
+      "canonicalDesignDocument": "design.md"
+    }
+  },
+  "font": {
+    "family": {
+      "displayEn": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "readingEn": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "headingZh": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "readingZh": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "readingMixed": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "homeLatin": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      },
+      "homeChinese": {
+        "$type": "fontFamily",
+        "$value": [
+          "Georgia",
+          "Times New Roman",
+          "Songti SC",
+          "STSong",
+          "SimSun",
+          "Noto Serif CJK SC",
+          "serif"
+        ]
+      }
+    },
+    "size": {
+      "s14": {
+        "$type": "dimension",
+        "$value": {
+          "value": 14,
+          "unit": "px"
+        }
+      },
+      "s16": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "s18": {
+        "$type": "dimension",
+        "$value": {
+          "value": 18,
+          "unit": "px"
+        }
+      },
+      "s20": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "px"
+        }
+      },
+      "s24": {
+        "$type": "dimension",
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        }
+      },
+      "s28": {
+        "$type": "dimension",
+        "$value": {
+          "value": 28,
+          "unit": "px"
+        }
+      },
+      "s32": {
+        "$type": "dimension",
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        }
+      },
+      "s36": {
+        "$type": "dimension",
+        "$value": {
+          "value": 36,
+          "unit": "px"
+        }
+      },
+      "s40": {
+        "$type": "dimension",
+        "$value": {
+          "value": 40,
+          "unit": "px"
+        }
+      },
+      "s48": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        }
+      },
+      "s56": {
+        "$type": "dimension",
+        "$value": {
+          "value": 56,
+          "unit": "px"
+        }
+      },
+      "s64": {
+        "$type": "dimension",
+        "$value": {
+          "value": 64,
+          "unit": "px"
+        }
+      },
+      "s80": {
+        "$type": "dimension",
+        "$value": {
+          "value": 80,
+          "unit": "px"
+        }
+      },
+      "s96": {
+        "$type": "dimension",
+        "$value": {
+          "value": 96,
+          "unit": "px"
+        }
+      },
+      "s128": {
+        "$type": "dimension",
+        "$value": {
+          "value": 128,
+          "unit": "px"
+        }
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      }
+    },
+    "latinRegularFace": {
+      "family": "Georgia",
+      "local": [
+        "Georgia"
+      ],
+      "weightRange": [
+        100,
+        900
+      ],
+      "unicodeRange": "U+0000-024F, U+1E00-1EFF, U+2000-206F, U+FB00-FB06",
+      "note": "Bind Latin glyphs to the installed Georgia Regular face even inside bold Chinese text. The declared range prevents synthetic Latin bold; Chinese continues to use its existing Songti weight."
+    }
+  },
+  "typography": {
+    "mobile": {
+      "en": {
+        "display": {
+          "hero": {
+            "$type": "typography",
+            "$description": "首屏短英文装饰标题；不得承载长段内容",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s64}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.125
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 64,
+                "lineHeightPx": 72,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "section": {
+            "$type": "typography",
+            "$description": "章节英文装饰字；正文含义由真实标题提供",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s40}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 40,
+                "lineHeightPx": 48,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "英文页面大标题 · Geist Pixel Circle",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s36}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2222222222222223
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 36,
+                "lineHeightPx": 44,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s28}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2857142857142858
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 28,
+                "lineHeightPx": 36,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s24}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.3333333333333333
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 24,
+                "lineHeightPx": 32,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4444444444444444
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 26,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.6666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 30,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.mobile.en.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "mobile",
+                "locale": "en",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.625
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.625
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "mobile",
+                "locale": "en",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "mobile",
+                "locale": "en"
+              }
+            }
+          }
+        }
+      },
+      "zh": {
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "页面或案例主标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s36}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.72,
+                "unit": "px"
+              },
+              "lineHeight": 1.3333333333333333
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 36,
+                "lineHeightPx": 48,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s28}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.56,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 28,
+                "lineHeightPx": 40,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s24}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.48,
+                "unit": "px"
+              },
+              "lineHeight": 1.5
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 24,
+                "lineHeightPx": 36,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.36,
+                "unit": "px"
+              },
+              "lineHeight": 1.5555555555555556
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 28,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7777777777777777
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 32,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.mobile.zh.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "mobile",
+                "locale": "zh",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.75
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.75
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "mobile",
+                "locale": "zh",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.medium}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "mobile",
+                "locale": "zh"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tablet": {
+      "en": {
+        "display": {
+          "hero": {
+            "$type": "typography",
+            "$description": "首屏短英文装饰标题；不得承载长段内容",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s96}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.1666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 96,
+                "lineHeightPx": 112,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "section": {
+            "$type": "typography",
+            "$description": "章节英文装饰字；正文含义由真实标题提供",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s64}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.25
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 64,
+                "lineHeightPx": 80,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "英文页面大标题 · Geist Pixel Circle",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s48}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.1666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 48,
+                "lineHeightPx": 56,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s32}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.25
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 32,
+                "lineHeightPx": 40,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s24}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.3333333333333333
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 24,
+                "lineHeightPx": 32,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 28,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.6666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 30,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.tablet.en.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "tablet",
+                "locale": "en",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.625
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.6666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 30,
+                "mode": "tablet",
+                "locale": "en",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "tablet",
+                "locale": "en"
+              }
+            }
+          }
+        }
+      },
+      "zh": {
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "页面或案例主标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s48}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.96,
+                "unit": "px"
+              },
+              "lineHeight": 1.3333333333333333
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 48,
+                "lineHeightPx": 64,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s32}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.64,
+                "unit": "px"
+              },
+              "lineHeight": 1.5
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 32,
+                "lineHeightPx": 48,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s24}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.48,
+                "unit": "px"
+              },
+              "lineHeight": 1.5
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 24,
+                "lineHeightPx": 36,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.4,
+                "unit": "px"
+              },
+              "lineHeight": 1.6
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 32,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7777777777777777
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 32,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.tablet.zh.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "tablet",
+                "locale": "zh",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.75
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7777777777777777
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 32,
+                "mode": "tablet",
+                "locale": "zh",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.medium}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "tablet",
+                "locale": "zh"
+              }
+            }
+          }
+        }
+      }
+    },
+    "desktop": {
+      "en": {
+        "display": {
+          "hero": {
+            "$type": "typography",
+            "$description": "首屏短英文装饰标题；不得承载长段内容",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s128}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.125
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 128,
+                "lineHeightPx": 144,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "section": {
+            "$type": "typography",
+            "$description": "章节英文装饰字；正文含义由真实标题提供",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s80}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 80,
+                "lineHeightPx": 96,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "英文页面大标题 · Geist Pixel Circle",
+            "$value": {
+              "fontFamily": "{font.family.displayEn}",
+              "fontSize": "{font.size.s56}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.1428571428571428
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 56,
+                "lineHeightPx": 64,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s40}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 40,
+                "lineHeightPx": 48,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s28}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.2857142857142858
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 28,
+                "lineHeightPx": 36,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 28,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.6
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 32,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.desktop.en.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "desktop",
+                "locale": "en",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.625
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 26,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.6666666666666667
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 30,
+                "mode": "desktop",
+                "locale": "en",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingEn}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "desktop",
+                "locale": "en"
+              }
+            }
+          }
+        }
+      },
+      "zh": {
+        "heading": {
+          "h1": {
+            "$type": "typography",
+            "$description": "页面或案例主标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s56}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 1.12,
+                "unit": "px"
+              },
+              "lineHeight": 1.2857142857142858
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 56,
+                "lineHeightPx": 72,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "h2": {
+            "$type": "typography",
+            "$description": "主要章节标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s40}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.8,
+                "unit": "px"
+              },
+              "lineHeight": 1.4
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 40,
+                "lineHeightPx": 56,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "h3": {
+            "$type": "typography",
+            "$description": "章节内的小标题、项目名称",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s28}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.56,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 28,
+                "lineHeightPx": 40,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "h4": {
+            "$type": "typography",
+            "$description": "局部小标题与分组标题",
+            "$value": {
+              "fontFamily": "{font.family.headingZh}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0.4,
+                "unit": "px"
+              },
+              "lineHeight": 1.6
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 32,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          }
+        },
+        "body": {
+          "lead": {
+            "$type": "typography",
+            "$description": "首屏介绍、案例摘要",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s20}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.8
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 20,
+                "lineHeightPx": 36,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "article": {
+            "$type": "typography",
+            "$description": "案例连续正文；当前与 16px 普通正文共用基准，避免因内容较长而自动放大字号",
+            "$value": "{typography.desktop.zh.body.default}",
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "desktop",
+                "locale": "zh",
+                "status": "v1-design-default"
+              }
+            }
+          },
+          "default": {
+            "$type": "typography",
+            "$description": "普通正文与项目说明",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s16}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.75
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 16,
+                "lineHeightPx": 28,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "small": {
+            "$type": "typography",
+            "$description": "小号正文、图注、辅助说明；阅读字号下限",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7142857142857142
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 24,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          },
+          "articleLarge": {
+            "$type": "typography",
+            "$description": "待验证的可选大正文；18px 不是用户已确认的案例长文规则；不得默认启用",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s18}",
+              "fontWeight": "{font.weight.regular}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.7777777777777777
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 18,
+                "lineHeightPx": 32,
+                "mode": "desktop",
+                "locale": "zh",
+                "status": "exploratory-not-default"
+              }
+            }
+          }
+        },
+        "label": {
+          "default": {
+            "$type": "typography",
+            "$description": "导航、日期、标签、元信息",
+            "$value": {
+              "fontFamily": "{font.family.readingZh}",
+              "fontSize": "{font.size.s14}",
+              "fontWeight": "{font.weight.medium}",
+              "letterSpacing": {
+                "value": 0,
+                "unit": "px"
+              },
+              "lineHeight": 1.4285714285714286
+            },
+            "$extensions": {
+              "io.github.ailin-yu.portfolio": {
+                "fontSizePx": 14,
+                "lineHeightPx": 20,
+                "mode": "desktop",
+                "locale": "zh"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "homepage": {
+    "source": "Figma QVjaUsoQt69LeMckHJnz4Q / 95:740, exported with native SVG text on 2026-11-06",
+    "note": "Preserve Figma independent text baselines and sizes; all page text uses the global Georgia / Songti stack after the 2026-11-07 user update.",
+    "sizes": {
+      "hero": 28,
+      "heading": 28,
+      "cardTitle": 24,
+      "meta": 16,
+      "date": 12,
+      "contact": 20,
+      "nav": 14
+    }
+  },
+  "projectCase": {
+    "source": "Figma QVjaUsoQt69LeMckHJnz4Q / 136:12578, native SVG and PNG export 2026-11-07",
+    "note": "Preserve Figma Data Agent sizes and weights; font families now follow the global Georgia / Songti rule, including mixed prose and navigation.",
+    "sizes": {
+      "title": 60,
+      "heading": 28,
+      "subheading": 24,
+      "body": 20,
+      "nav": 14,
+      "mobileTitle": 40,
+      "mobileHeading": 24,
+      "mobileBody": 18
+    }
+  }
+}

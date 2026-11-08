@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="535" viewBox="0 0 1440 535" role="img" aria-labelledby="title description">
+<title id="title">企业 AI 开发核心旅程</title>
+<desc id="description">按 DataOps、MLOps、LLMOps 展示环境准备、数据准备、模型开发、模型部署、知识库构建、应用编排和 Agent 服务七个阶段的需求痛点与产品体验方向。依据原始用户旅程重新排版。</desc>
+<style>@font-face{font-family:Georgia;src:local(Georgia);font-style:normal;font-weight:100 900;unicode-range:U+0000-024F,U+1E00-1EFF,U+2000-206F,U+FB00-FB06}text{font-family:Georgia, 'Times New Roman', 'Songti SC', STSong, SimSun, 'Noto Serif CJK SC', serif;font-weight:400;font-size:17px;fill:#374151}.muted{fill:#6B7280}.phase{font-size:24px;fill:#636AE7}.stage{fill:#111827}</style>
+<rect width="1440" height="535" rx="24" fill="#FFFFFF"/>
+<defs><clipPath id="phase-0"><rect x="136" y="36" width="348.57142857142856" height="463" rx="16"/></clipPath></defs>
+<g clip-path="url(#phase-0)" data-phase="DataOps">
+<rect x="136" y="36" width="348.57142857142856" height="463" fill="#FFFFFF"/>
+<rect x="136" y="36" width="348.57142857142856" height="72" fill="#F7F7FF"/>
+<rect x="136" y="180" width="348.57142857142856" height="172" fill="#F4F5F8"/>
+<line x1="310.2857142857143" y1="108" x2="310.2857142857143" y2="499" stroke="#DCE0E9" stroke-width="1"/>
+</g>
+<rect x="136" y="36" width="348.57142857142856" height="463" rx="16" fill="none" stroke="#DCE0E9" stroke-width="1.25"/>
+<text x="152" y="77.525" class="muted">01</text>
+<text x="192" y="79.8" class="phase">DataOps</text>
+<text x="468.57142857142856" y="77.525" text-anchor="end" class="muted">数据开发</text>
+<defs><clipPath id="phase-1"><rect x="508.57142857142856" y="36" width="348.57142857142856" height="463" rx="16"/></clipPath></defs>
+<g clip-path="url(#phase-1)" data-phase="MLOps">
+<rect x="508.57142857142856" y="36" width="348.57142857142856" height="463" fill="#FFFFFF"/>
+<rect x="508.57142857142856" y="36" width="348.57142857142856" height="72" fill="#F7F7FF"/>
+<rect x="508.57142857142856" y="180" width="348.57142857142856" height="172" fill="#F4F5F8"/>
+<line x1="682.8571428571429" y1="108" x2="682.8571428571429" y2="499" stroke="#DCE0E9" stroke-width="1"/>
+</g>
+<rect x="508.57142857142856" y="36" width="348.57142857142856" height="463" rx="16" fill="none" stroke="#DCE0E9" stroke-width="1.25"/>
+<text x="524.5714285714286" y="77.525" class="muted">02</text>
+<text x="564.5714285714286" y="79.8" class="phase">MLOps</text>
+<text x="841.1428571428571" y="77.525" text-anchor="end" class="muted">模型开发</text>
+<defs><clipPath id="phase-2"><rect x="881.1428571428571" y="36" width="522.8571428571429" height="463" rx="16"/></clipPath></defs>
+<g clip-path="url(#phase-2)" data-phase="LLMOps">
+<rect x="881.1428571428571" y="36" width="522.8571428571429" height="463" fill="#FFFFFF"/>
+<rect x="881.1428571428571" y="36" width="522.8571428571429" height="72" fill="#F7F7FF"/>
+<rect x="881.1428571428571" y="180" width="522.8571428571429" height="172" fill="#F4F5F8"/>
+<line x1="1055.4285714285713" y1="108" x2="1055.4285714285713" y2="499" stroke="#DCE0E9" stroke-width="1"/>
+<line x1="1229.7142857142858" y1="108" x2="1229.7142857142858" y2="499" stroke="#DCE0E9" stroke-width="1"/>
+</g>
+<rect x="881.1428571428571" y="36" width="522.8571428571429" height="463" rx="16" fill="none" stroke="#DCE0E9" stroke-width="1.25"/>
+<text x="897.1428571428571" y="77.525" class="muted">03</text>
+<text x="937.1428571428571" y="79.8" class="phase">LLMOps</text>
+<text x="1388" y="77.525" text-anchor="end" class="muted">应用开发</text>
+<text x="36" y="149.525" class="muted">业务流程</text>
+<text x="36" y="222.025" class="muted">需求痛点</text>
+<text x="36" y="394.025" class="muted">产品体验</text>
+<text x="223.14285714285714" y="149.525" text-anchor="middle" class="stage">环境准备</text>
+<circle cx="148" cy="216.025" r="2" fill="#6B7280"/>
+<text x="158" y="222.025"><tspan x="158" dy="0">业务需求响应慢</tspan></text>
+<circle cx="148" cy="253.02499999999998" r="2" fill="#6B7280"/>
+<text x="158" y="259.025"><tspan x="158" dy="0">库表权限管理复杂</tspan></text>
+<line x1="148" y1="379.025" x2="148" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="158" y="394.025"><tspan x="158" dy="0">工作空间引导</tspan></text>
+<line x1="148" y1="416.025" x2="148" y2="435.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="158" y="431.025"><tspan x="158" dy="0">统一计算资源配置</tspan></text>
+<line x1="148" y1="453.025" x2="148" y2="472.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="158" y="468.025"><tspan x="158" dy="0">人员权限管理</tspan></text>
+<text x="397.42857142857144" y="149.525" text-anchor="middle" class="stage">数据准备</text>
+<circle cx="322.2857142857143" cy="216.025" r="2" fill="#6B7280"/>
+<text x="332.2857142857143" y="222.025"><tspan x="332.2857142857143" dy="0">跨库、跨引擎开发</tspan><tspan x="332.2857142857143" dy="25">分散</tspan></text>
+<circle cx="322.2857142857143" cy="278.025" r="2" fill="#6B7280"/>
+<text x="332.2857142857143" y="284.025"><tspan x="332.2857142857143" dy="0">库表与权限信息复</tspan><tspan x="332.2857142857143" dy="25">杂</tspan></text>
+<line x1="322.2857142857143" y1="379.025" x2="322.2857142857143" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="332.2857142857143" y="394.025"><tspan x="332.2857142857143" dy="0">统一数据目录</tspan></text>
+<text x="595.7142857142857" y="149.525" text-anchor="middle" class="stage">模型开发</text>
+<circle cx="520.5714285714286" cy="216.025" r="2" fill="#6B7280"/>
+<text x="530.5714285714286" y="222.025"><tspan x="530.5714285714286" dy="0">缺少 SparkSQL</tspan><tspan x="530.5714285714286" dy="25">开发支持</tspan></text>
+<circle cx="520.5714285714286" cy="278.025" r="2" fill="#6B7280"/>
+<text x="530.5714285714286" y="284.025"><tspan x="530.5714285714286" dy="0">Jupyter 与 IDE</tspan><tspan x="530.5714285714286" dy="25">体验割裂</tspan></text>
+<line x1="520.5714285714286" y1="379.025" x2="520.5714285714286" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="530.5714285714286" y="394.025"><tspan x="530.5714285714286" dy="0">Notebook 开发</tspan></text>
+<line x1="520.5714285714286" y1="416.025" x2="520.5714285714286" y2="435.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="530.5714285714286" y="431.025"><tspan x="530.5714285714286" dy="0">自动化任务编排</tspan></text>
+<text x="770" y="149.525" text-anchor="middle" class="stage">模型部署</text>
+<circle cx="694.8571428571429" cy="216.025" r="2" fill="#6B7280"/>
+<text x="704.8571428571429" y="222.025"><tspan x="704.8571428571429" dy="0">模型部署能力不足</tspan></text>
+<line x1="694.8571428571429" y1="379.025" x2="694.8571428571429" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="704.8571428571429" y="394.025"><tspan x="704.8571428571429" dy="0">模型在线服务</tspan></text>
+<text x="968.2857142857142" y="149.525" text-anchor="middle" class="stage">知识库构建</text>
+<circle cx="893.1428571428571" cy="216.025" r="2" fill="#6B7280"/>
+<text x="903.1428571428571" y="222.025"><tspan x="903.1428571428571" dy="0">结构化 / 非结构化</tspan><tspan x="903.1428571428571" dy="25">数据</tspan></text>
+<circle cx="893.1428571428571" cy="278.025" r="2" fill="#6B7280"/>
+<text x="903.1428571428571" y="284.025"><tspan x="903.1428571428571" dy="0">解析与 RAG 检索</tspan></text>
+<circle cx="893.1428571428571" cy="315.025" r="2" fill="#6B7280"/>
+<text x="903.1428571428571" y="321.025"><tspan x="903.1428571428571" dy="0">向量库数据同步</tspan></text>
+<line x1="893.1428571428571" y1="379.025" x2="893.1428571428571" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="903.1428571428571" y="394.025"><tspan x="903.1428571428571" dy="0">一体化数据准备</tspan></text>
+<text x="1142.5714285714284" y="149.525" text-anchor="middle" class="stage">应用编排</text>
+<circle cx="1067.4285714285713" cy="216.025" r="2" fill="#6B7280"/>
+<text x="1077.4285714285713" y="222.025"><tspan x="1077.4285714285713" dy="0">资源类型多</tspan></text>
+<circle cx="1067.4285714285713" cy="253.02499999999998" r="2" fill="#6B7280"/>
+<text x="1077.4285714285713" y="259.025"><tspan x="1077.4285714285713" dy="0">开通与管理成本高</tspan></text>
+<line x1="1067.4285714285713" y1="379.025" x2="1067.4285714285713" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="1077.4285714285713" y="394.025"><tspan x="1077.4285714285713" dy="0">Dify 应用编排</tspan></text>
+<line x1="1067.4285714285713" y1="416.025" x2="1067.4285714285713" y2="435.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="1077.4285714285713" y="431.025"><tspan x="1077.4285714285713" dy="0">资源开通与部署</tspan></text>
+<text x="1316.857142857143" y="149.525" text-anchor="middle" class="stage">Agent 服务</text>
+<circle cx="1241.7142857142858" cy="216.025" r="2" fill="#6B7280"/>
+<text x="1251.7142857142858" y="222.025"><tspan x="1251.7142857142858" dy="0">应用效果难直观感</tspan><tspan x="1251.7142857142858" dy="25">知</tspan></text>
+<circle cx="1241.7142857142858" cy="278.025" r="2" fill="#6B7280"/>
+<text x="1251.7142857142858" y="284.025"><tspan x="1251.7142857142858" dy="0">体验成本高</tspan></text>
+<line x1="1241.7142857142858" y1="379.025" x2="1241.7142857142858" y2="398.025" stroke="#636AE7" stroke-width="2" stroke-linecap="round"/>
+<text x="1251.7142857142858" y="394.025"><tspan x="1251.7142857142858" dy="0">Agent 服务</tspan></text>
+<rect x="299.2857142857143" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 303.2857142857143 144 H 317.2857142857143 M 312.2857142857143 139 L 317.2857142857143 144 L 312.2857142857143 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="485.57142857142856" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 489.57142857142856 144 H 503.57142857142856 M 498.57142857142856 139 L 503.57142857142856 144 L 498.57142857142856 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="671.8571428571429" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 675.8571428571429 144 H 689.8571428571429 M 684.8571428571429 139 L 689.8571428571429 144 L 684.8571428571429 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="858.1428571428571" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 862.1428571428571 144 H 876.1428571428571 M 871.1428571428571 139 L 876.1428571428571 144 L 871.1428571428571 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1044.4285714285713" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 1048.4285714285713 144 H 1062.4285714285713 M 1057.4285714285713 139 L 1062.4285714285713 144 L 1057.4285714285713 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="1218.7142857142858" y="132" width="22" height="24" rx="4" fill="#FFFFFF"/>
+<path d="M 1222.7142857142858 144 H 1236.7142857142858 M 1231.7142857142858 139 L 1236.7142857142858 144 L 1231.7142857142858 149" fill="none" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
