@@ -42,20 +42,24 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
     root.current?.focus({ preventScroll: true })
     const frame = requestAnimationFrame(() => setVisible(true))
     const key = (event: KeyboardEvent) => { if (event.key === 'Escape') { event.preventDefault(); dismiss() } }
+    // Release our lock before the router captures its own return-transition state.
+    const routeChange = () => { if (page) page.inert = previousInert; onClose() }
     document.addEventListener('keydown', key)
+    document.addEventListener('portfolio:before-case-navigation', routeChange)
     window.addEventListener('resize', onClose)
-    window.addEventListener('hashchange', onClose)
+    window.addEventListener('hashchange', routeChange, true)
     return () => {
       cancelAnimationFrame(frame)
       document.removeEventListener('keydown', key)
+      document.removeEventListener('portfolio:before-case-navigation', routeChange)
       window.removeEventListener('resize', onClose)
-      window.removeEventListener('hashchange', onClose)
+      window.removeEventListener('hashchange', routeChange, true)
       document.documentElement.style.overflow = overflow
       document.body.style.paddingRight = padding
-      if (page) page.inert = previousInert
+      if (page && !document.documentElement.hasAttribute('data-project-entry')) page.inert = previousInert
       trigger.style.visibility = visibility
-      if (trigger.isConnected) {
-        if (location.hash === openingHash) window.scrollTo({ ...readingPosition, behavior: 'instant' })
+      if (trigger.isConnected && location.hash === openingHash) {
+        window.scrollTo({ ...readingPosition, behavior: 'instant' })
         trigger.focus({ preventScroll: true })
         if (wasPlaying && video && !document.hidden) void video.play().catch(() => {})
       }

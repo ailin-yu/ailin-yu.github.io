@@ -57,6 +57,7 @@ export default function App() {
   useEffect(() => () => { cancelProjectEntry(); caseNextTransition.current?.skipTransition() }, [])
   useEffect(() => {
     const navigate = async (from: string, next: string) => {
+      document.dispatchEvent(new Event('portfolio:before-case-navigation'))
       caseNextTransition.current?.skipTransition()
       if (from === '#/projects/cloudai' && next === '#/projects/playbook' && typeof document.startViewTransition === 'function' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
         cancelProjectEntry()
