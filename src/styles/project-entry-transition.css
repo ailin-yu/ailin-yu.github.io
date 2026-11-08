@@ -1,0 +1,19 @@
+.project-entry-layer { position:fixed; inset:0; z-index:120; pointer-events:auto; overflow:hidden; }
+.project-entry-backdrop { position:absolute; inset:0; background:var(--background); opacity:0; }
+.project-entry-frame { position:absolute; overflow:hidden; isolation:isolate; }
+.project-entry-frame > .project-entry-media { display:block; width:100%; height:100%; border-radius:0; }
+.project-entry-video { position:absolute; inset:0; }
+@media(prefers-reduced-motion:reduce) { .project-entry-layer { display:none; } }
+
+/* CloudAI's closing Next link leads into the independent Playbook case. */
+:root[data-case-next-transition]::view-transition-old(root) { animation:case-next-out 260ms cubic-bezier(.4,0,.2,1) both; mix-blend-mode:normal; }
+:root[data-case-next-transition]::view-transition-new(root) { animation:case-next-in 480ms cubic-bezier(.22,1,.36,1) both; mix-blend-mode:normal; }
+@keyframes case-next-out { to { opacity:0; transform:translateY(-8px); } }
+@keyframes case-next-in { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.da-next[data-next-transition] > span { transition:transform 300ms cubic-bezier(.22,1,.36,1),color 300ms ease; }
+.da-next[data-next-transition]:is(:hover,:focus-visible) > span { transform:translateX(6px); }
+@media(prefers-reduced-motion:reduce) {
+ .da-next[data-next-transition] > span { transition:none; }
+ .da-next[data-next-transition]:is(:hover,:focus-visible) > span { transform:none; }
+ :root[data-case-next-transition]::view-transition-old(root),:root[data-case-next-transition]::view-transition-new(root) { animation:none; }
+}

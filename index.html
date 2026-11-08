@@ -1,92 +1,21 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light">
-<title>coming soon</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;color:#636AE7}html{background:#fff}body{background:rgba(221,225,250,.8);min-height:100svh;overflow:hidden;font-family:"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif}main{min-height:100svh;display:grid;place-items:center}h1{margin:0;font-size:min(10.8vw,28svh);font-weight:400;white-space:nowrap}canvas{display:none;width:100vw;height:100svh}.ready canvas{display:block}.ready h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-</style>
-</head>
-<body>
-<main><h1>coming soon</h1><canvas id="art" aria-hidden="true"></canvas></main>
-<script>
-(() => {
-  'use strict';
-  const canvas=document.getElementById('art'),ctx=canvas.getContext('2d');
-  if(!ctx)return;
-  const mask=document.createElement('canvas'),m=mask.getContext('2d',{willReadFrequently:true});
-  if(!m)return;
-  const family='"Songti SC",STSong,SimSun,"Noto Serif CJK SC",serif';
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let width=0,height=0,radius=90,dot=.7,particles=[],raf=0,last=0;
-  const pointer={x:0,y:0,active:false};
-  function render(){
-    ctx.clearRect(0,0,width,height);
-    ctx.fillStyle='#636AE7';ctx.beginPath();
-    for(const p of particles){ctx.moveTo(p.x+dot,p.y);ctx.arc(p.x,p.y,dot,0,Math.PI*2);}
-    ctx.fill();
-  }
-  function frame(now){
-    raf=0;
-    if(document.hidden)return;
-    const dt=last?Math.min((now-last)/16.667,2):1;last=now;
-    let energy=0;
-    for(const p of particles){
-      let targetX=p.bx,targetY=p.by;
-      if(pointer.active&&!reduced.matches){
-        const dx=p.bx-pointer.x,dy=p.by-pointer.y,distance=Math.hypot(dx,dy);
-        if(distance<radius){
-          const falloff=1-distance/radius,force=radius*1.12*falloff*falloff;
-          const angle=distance>.01?Math.atan2(dy,dx):p.angle;
-          targetX+=Math.cos(angle)*force;targetY+=Math.sin(angle)*force;
-        }
-      }
-      p.vx=(p.vx+(targetX-p.x)*.115*dt)*Math.pow(.73,dt);
-      p.vy=(p.vy+(targetY-p.y)*.115*dt)*Math.pow(.73,dt);
-      p.x+=p.vx*dt;p.y+=p.vy*dt;
-      energy=Math.max(energy,Math.abs(p.x-p.bx)+Math.abs(p.y-p.by)+Math.abs(p.vx)+Math.abs(p.vy));
-    }
-    render();
-    if((pointer.active&&!reduced.matches)||energy>.025)raf=requestAnimationFrame(frame);
-    else{last=0;for(const p of particles){p.x=p.bx;p.y=p.by;p.vx=p.vy=0;}render();}
-  }
-  function wake(){if(!raf&&!document.hidden){last=0;raf=requestAnimationFrame(frame);}}
-  function resize(){
-    cancelAnimationFrame(raf);raf=0;last=0;pointer.active=false;
-    width=innerWidth;height=innerHeight;
-    const dpr=Math.min(devicePixelRatio||1,2);
-    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-    let size=Math.min(width*.108,height*.28);
-    m.font='400 '+size+'px '+family;
-    const text='coming soon',maxWidth=width-48;
-    if(m.measureText(text).width>maxWidth)size*=maxWidth/m.measureText(text).width;
-    mask.width=Math.ceil(maxWidth+32);mask.height=Math.ceil(size*1.9+32);
-    m.font='400 '+size+'px '+family;m.fillStyle='#000';m.textAlign='center';m.textBaseline='alphabetic';
-    const metrics=m.measureText(text);
-    const ascent=metrics.actualBoundingBoxAscent||size*.75,descent=metrics.actualBoundingBoxDescent||size*.2;
-    m.fillText(text,mask.width/2,(mask.height+ascent-descent)/2);
-    const pixels=m.getImageData(0,0,mask.width,mask.height).data;
-    const step=Math.max(1.35,Math.min(2.15,size/45));dot=step*.31;
-    radius=Math.max(45,Math.min(100,size*1.05));particles=[];
-    for(let y=0;y<mask.height;y+=step){for(let x=0;x<mask.width;x+=step){
-      if(pixels[(Math.floor(y)*mask.width+Math.floor(x))*4+3]>105){
-        const bx=width/2+x-mask.width/2,by=height/2+y-mask.height/2;
-        particles.push({bx,by,x:bx,y:by,vx:0,vy:0,angle:Math.sin(x*12.9+y*7.3)*Math.PI});
-      }
-    }}
-    render();
-  }
-  function leave(){pointer.active=false;wake();}
-  canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;pointer.x=e.clientX;pointer.y=e.clientY;pointer.active=true;wake();},{passive:true});
-  canvas.addEventListener('pointerleave',leave);
-  addEventListener('blur',leave);
-  document.addEventListener('visibilitychange',()=>{pointer.active=false;if(document.hidden){cancelAnimationFrame(raf);raf=0;last=0;}else wake();});
-  reduced.addEventListener('change',leave);
-  addEventListener('resize',resize,{passive:true});
-  document.fonts.ready.then(()=>{resize();document.documentElement.classList.add('ready');});
-})();
-</script>
-</body>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="余艾琳 Ailin Yu 的作品集。连接用户问题、产品判断、体验设计与工程实现，探索企业级 AI 产品如何走进真实的工作。" />
+    <meta name="theme-color" content="#FAFBFD" />
+    <script>
+      try {
+        const saved = localStorage.getItem('portfolio-theme');
+        document.documentElement.dataset.theme = saved === 'dark' || saved === 'light' ? saved : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch { document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    </script>
+    <title>余艾琳 Ailin Yu · AI Product Builder</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

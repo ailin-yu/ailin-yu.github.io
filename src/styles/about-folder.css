@@ -1,0 +1,53 @@
+.home-about-refined { position:relative; }
+.home-about-refined .about-folder { width:min(100%,484px); height:390px; }
+.home-about-refined .about-folder .home-folder-back { inset:159px 6% 11px; border-radius:9px; }
+.home-about-refined .about-folder .home-folder-back > span { width:43%; height:25px; top:-23px; }
+.home-about-refined .about-folder .home-work-sheet { top:32px; height:296px; }
+.home-about-refined .about-folder .home-work-pocket {
+  left:5%; width:90%; height:136px; bottom:1px; padding:19px 26px;
+  background:transparent; border:0; box-shadow:none; backdrop-filter:none;
+  isolation:isolate;
+}
+.home-about-refined .about-folder .home-work-pocket::before,
+.home-about-refined .about-folder .home-work-pocket::after {
+  content:''; position:absolute; pointer-events:none;
+  clip-path:polygon(0 0,100% 0,97% 96%,96% 100%,4% 100%,3% 96%);
+  border-radius:0 10px 12px 12px;
+}
+.home-about-refined .about-folder .home-work-pocket::before { inset:0; z-index:-2; background:var(--folder-edge); }
+.home-about-refined .about-folder .home-work-pocket::after {
+  inset:1px; z-index:-1; background:var(--folder-tint);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--surface) 65%,transparent);
+}
+.home-about-refined .about-folder .home-work-tab { left:0; width:44%; height:29px; padding-top:5px; border-radius:8px 12px 0 0; }
+.home-about-refined .about-folder .home-work-pocket-label { font-size:var(--type-zh-heading-h2-size); }
+.home-about-refined .about-folder .home-work-pocket-caption { margin-top:5px; }
+.home-about-annotation {
+  position:absolute; left:-6px; top:164px; width:128px; pointer-events:none;
+  color:var(--muted-foreground); transform:rotate(-7deg);
+}
+.home-about-annotation > span {
+  display:block; margin-left:4px; font-family:var(--font-heading-zh);
+  font-size:var(--type-zh-body-small-size); line-height:var(--type-zh-body-small-line);
+}
+.home-about-annotation > svg { width:112px; height:80px; overflow:visible; }
+.home-about-annotation path { stroke:currentColor; stroke-width:1.25; stroke-linecap:round; stroke-linejoin:round; }
+@media(min-width:761px) and (max-width:1100px) {
+  .home-about-refined .about-folder { height:356px; }
+  .home-about-refined .about-folder .home-work-sheet { height:270px; top:24px; }
+  .home-about-refined .about-folder .home-folder-back { top:140px; }
+  .home-about-annotation { top:142px; left:-10px; width:112px; }
+}
+@media(max-width:760px) {
+  .home-about-refined .about-folder { height:286px; }
+  .home-about-refined .about-folder .home-work-sheet { height:225px; top:16px; }
+  .home-about-refined .about-folder .home-folder-back { top:99px; }
+  .home-about-refined .about-folder .home-work-pocket { height:116px; padding:16px 20px; }
+  .home-about-refined .about-folder .home-work-tab { height:27px; width:49%; }
+  .home-about-refined .about-folder .home-work-pocket-label { font-size:var(--type-zh-heading-h3-size); }
+  .home-about-annotation { display:none; }
+}
+@media(max-width:360px) {
+  .home-about-refined .about-folder .home-work-pocket { height:104px; padding-inline:19px; }
+  .home-about-refined .about-folder .home-work-pocket-caption { display:none; }
+}
