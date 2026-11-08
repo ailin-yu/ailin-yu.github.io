@@ -17,7 +17,7 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
   const gap = innerWidth < 768 ? 16 : 40
   const ratio = Math.min((innerWidth - gap * 2) / (width || 1600), (innerHeight - gap * 2) / (height || 900), 1)
   const target = { width: (width || 1600) * ratio, height: (height || 900) * ratio }
-  const gestures = useImageGestures({ viewportWidth: innerWidth, viewportHeight: innerHeight, ...target, gap })
+  const gestures = useImageGestures({ viewportWidth: innerWidth, viewportHeight: innerHeight, ...target, gap }, root)
   const left = (innerWidth - target.width) / 2, top = (innerHeight - target.height) / 2
   const transform = `translate(${origin.x + origin.width / 2 - innerWidth / 2}px,${origin.y + origin.height / 2 - innerHeight / 2}px) scale(${origin.width / target.width})`
   const style: CSSProperties = { left, top, ...target, transform: visible ? 'translate(0,0) scale(1)' : transform }
@@ -48,13 +48,19 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
     const routeChange = () => { if (page) page.inert = previousInert; onClose() }
     document.addEventListener('keydown', key)
     document.addEventListener('portfolio:before-case-navigation', routeChange)
-    window.addEventListener('resize', onClose)
+    const openingWidth = innerWidth, openingHeight = innerHeight
+    const resize = () => {
+      // iPhone browser bars change the viewport height during touch interaction.
+      // Keep the image open; width/orientation changes still restore its layout.
+      if (innerWidth !== openingWidth || (!matchMedia('(pointer: coarse)').matches && innerHeight !== openingHeight)) onClose()
+    }
+    window.addEventListener('resize', resize)
     window.addEventListener('hashchange', routeChange, true)
     return () => {
       cancelAnimationFrame(frame)
       document.removeEventListener('keydown', key)
       document.removeEventListener('portfolio:before-case-navigation', routeChange)
-      window.removeEventListener('resize', onClose)
+      window.removeEventListener('resize', resize)
       window.removeEventListener('hashchange', routeChange, true)
       document.documentElement.style.overflow = overflow
       document.body.style.paddingRight = padding

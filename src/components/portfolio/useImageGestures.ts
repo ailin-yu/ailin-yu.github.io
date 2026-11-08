@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent, type RefObject } from 'react'
 import { ImageGestures, type ImageBounds } from '@/lib/image-gestures'
+import { bindImageTouchEvents } from '@/lib/image-touch-events'
 
-export function useImageGestures(bounds: ImageBounds) {
+export function useImageGestures(bounds: ImageBounds, root: RefObject<HTMLDivElement | null>) {
   const [controller] = useState(() => new ImageGestures(bounds))
   const [transform, setTransform] = useState(controller.state)
   const [dragging, setDragging] = useState(false)
@@ -12,13 +13,22 @@ export function useImageGestures(bounds: ImageBounds) {
     controller.cancel(); controller.zoomTo(1)
     setTransform({ ...controller.state }); setDragging(false)
   }, [controller])
-  const update = () => {
+  const update = useCallback(() => {
     if (!frame.current) frame.current = requestAnimationFrame(() => {
       frame.current = 0; setTransform({ ...controller.state })
     })
-  }
+  }, [controller])
+  useEffect(() => {
+    if (!root.current) return
+    return bindImageTouchEvents(root.current, controller, {
+      update, dragging: setDragging,
+      suppressClick: () => { suppressClickUntil.current = performance.now() + 350 },
+      allowMarginTap: () => { suppressClickUntil.current = 0 },
+    })
+  }, [controller, root, update])
   useEffect(() => () => { cancelAnimationFrame(frame.current); controller.cancel() }, [controller])
   const finish = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return
     if (!controller.pointers.has(event.pointerId)) return
     if (controller.moved) suppressClickUntil.current = performance.now() + 350
     controller.end(event.pointerId)
@@ -31,13 +41,11 @@ export function useImageGestures(bounds: ImageBounds) {
     reset,
     handlers: {
       onPointerDown(event: PointerEvent<HTMLDivElement>) {
+        if (event.pointerType === 'touch') return
         if (event.pointerType === 'mouse' && event.button !== 0) return
         const target = event.target as Element
         if (!controller.pointers.size && !target.closest('.case-image-zoom-content')) {
           suppressClickUntil.current = 0
-          // A touch may begin in the margin and become the first half of a pinch.
-          // Leave its ordinary tap alone so the blank-area close button still works.
-          if (event.pointerType === 'touch') controller.start(event.pointerId, { x: event.clientX, y: event.clientY })
           return
         }
         // Let native video playback/seek controls receive their own input.
@@ -52,11 +60,14 @@ export function useImageGestures(bounds: ImageBounds) {
         setDragging(true)
       },
       onPointerMove(event: PointerEvent<HTMLDivElement>) {
+        if (event.pointerType === 'touch') return
         if (controller.move(event.pointerId, { x: event.clientX, y: event.clientY })) { event.preventDefault(); update() }
       },
       onPointerUp: finish,
       onPointerCancel: finish,
-      onLostPointerCapture: finish,
+      onLostPointerCapture(event: PointerEvent<HTMLDivElement>) {
+        if (event.target === event.currentTarget) finish(event)
+      },
       onClickCapture(event: MouseEvent<HTMLDivElement>) {
         if (performance.now() < suppressClickUntil.current) { event.preventDefault(); event.stopPropagation() }
       },
