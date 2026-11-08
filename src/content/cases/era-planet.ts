@@ -5,7 +5,7 @@ export const eraPlanetCase: ProjectCase = {
   hero: { src: '/cases/era-planet/era-full.mp4', kind: 'video', poster: '/cases/era-planet/cover.webp', alt: 'Éra-Planet AR 智能木玩项目演示', width: 1280, height: 720 },
   overview: [
     'Éra-Planet 是一款为儿童设计的 AR 智能木玩，将实体拼搭与增强现实结合，趣味呈现地球演变与生物特征，鼓励孩子在动手探索中理解生态、发挥想象。',
-    '项目由浙江大学与云和木玩联合发起，探索木制玩具的智能化方向。我负责交互与视觉设计，以及项目管理（PM）与整体协调推进。这是我研究生期间投入心血最多的项目，我们共同完成的作品获得了 5 项国内外设计奖项，这段经历也让我收获了珍贵的友谊。',
+    '该项目由浙江大学与云和木玩联合发起，探索木制玩具的智能化方向。我负责交互与视觉设计，以及项目管理（PM）与整体协调推进。这是我研究生期间投入心血最多的项目，我们共同完成的作品获得了 5 项国内外设计奖项，这段经历也让我收获了珍贵的友谊。',
   ],
   teamMembers: ['Sheng Yang', 'Ailin Yu', 'Fengyu Wang', 'Weijia Lin', 'Yihan Liu'],
   highlights: { label: '关键设计', english: 'Design Highlights', items: [

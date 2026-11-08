@@ -10,10 +10,10 @@ export const webideCase: ProjectCase = {
   chaptersBeforeHighlights: true,
   chapters: [
     { id: 'webide-journey', label: '用户旅程', english: 'User Journey', paragraphs: [
-      '项目始于 2024 年 Q4，面向企业从数据开发、模型开发到应用开发的完整旅程，DMS WebIDE 以统一工作空间衔接数据与开发能力。',
+      '项目始于 2024 年 Q4，面向企业从数据开发、模型开发到应用开发的完整旅程，DMS WebIDE 以统一工作空间衔接数据与开发能力。下文主要介绍 Notebook 编辑器的相关设计。',
     ], media: [
       { src: '/cases/webide/user-journey-light.svg', darkSrc: '/cases/webide/user-journey-dark.svg', layout: 'wide-diagram', alt: 'DMS 企业 AI 开发用户旅程：DataOps、MLOps 与 LLMOps 七个阶段的需求痛点及产品体验', width: 1440, height: 535, caption: '企业 AI 开发核心旅程 · Core User Journey' },
-    ], note: '下文聚焦工作空间准备与我重点负责的 Notebook 编辑器：从进入开发环境、配置运行资源，到操作和筛选查询结果，串起连续的开发过程。' },
+    ] },
   ],
   highlights: { label: '关键设计', english: 'Design Highlights', items: [
     { id: 'webide-workspace', title: '给开发准备一个清晰起点', paragraphs: [
