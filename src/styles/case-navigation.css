@@ -66,3 +66,17 @@
 
 .case-content > main { animation:case-arrive .3s ease-out; }
 @keyframes case-arrive { from { opacity:0; } to { opacity:1; } }
+
+/* Keep the mobile chapter marks inside the outer gutter, beside the artwork. */
+@media (max-width:767px) {
+ .case-layout .case-outline { right:0; width:24px; }
+ .case-layout .case-outline-trigger { width:24px; min-width:0; padding:12px 0; }
+ .case-layout .case-outline-mark i { width:8px; }
+ .case-layout .case-outline-mark[data-active=true] > i:first-child { width:14px; }
+ .case-content :is(.project-media-columns,.project-chapter-items-columns,.da-media-grid,.student-image-pair,.student-process-grid,.aidbs-diagnosis-layout.is-comparing) { grid-template-columns:minmax(0,1fr); }
+ .case-content .student-process-grid[data-count] { grid-template-columns:minmax(0,1fr); }
+ .case-content .student-process-grid .student-process-step { grid-column:auto; width:100%; }
+ #cloudai-genui-comparison > .project-media-columns > .project-figure { width:100%; }
+ :root,body,.case-outline-scroll,.work-menu-panel { scrollbar-width:none; }
+ :root::-webkit-scrollbar,body::-webkit-scrollbar,.case-outline-scroll::-webkit-scrollbar,.work-menu-panel::-webkit-scrollbar { display:none; width:0; height:0; }
+}

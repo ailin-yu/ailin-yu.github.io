@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, type ImgHTMLAttributes } from 'react'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { imageAsset, imageSrcSet, mobileImage } from '@/lib/media-images'
 
-type Props = ImgHTMLAttributes<HTMLImageElement> & { src: string; eager?: boolean; fullResolution?: boolean }
+type Props = ImgHTMLAttributes<HTMLImageElement> & { src: string; eager?: boolean; fullResolution?: boolean; previewSrc?: string }
 
 /** An inline tiny preview remains visible while the real image is in flight. */
-export function ProgressiveImage({ src, eager = false, fullResolution = false, style, onLoad, onError, ...props }: Props) {
+export function ProgressiveImage({ src, eager = false, fullResolution = false, previewSrc, style, onLoad, onError, ...props }: Props) {
   const ref = useRef<HTMLImageElement>(null)
   const mobile = useMediaQuery('(max-width: 767px)')
   const [nearby, setNearby] = useState(eager)
@@ -29,7 +29,7 @@ export function ProgressiveImage({ src, eager = false, fullResolution = false, s
     width={props.width || asset?.width} height={props.height || asset?.height}
     loading={asset || eager ? 'eager' : 'lazy'} decoding="async" fetchPriority={eager ? 'high' : 'auto'}
     data-media-state={loaded === key ? 'ready' : requested ? 'loading' : 'preview'}
-    style={{ ...style, ...(asset && loaded !== key ? { backgroundImage: `url("${asset.preview}")`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' } : {}) }}
+    style={{ ...style, ...((previewSrc || asset) && loaded !== key ? { backgroundImage: `url("${previewSrc || asset?.preview}")`, backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat' } : {}) }}
     onLoad={event => {
       if (requested && !event.currentTarget.currentSrc.startsWith('data:')) { setLoaded(key); onLoad?.(event) }
     }} onError={event => { if (!fallback && target !== src) setFallback(true); onError?.(event) }} />
