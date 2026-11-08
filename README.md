@@ -39,6 +39,8 @@ pnpm prepare:deploy
 - 动图使用 H.264 MP4，滚动进入视口才请求，离屏或标签进入后台暂停；保留循环、点击放大和减少动态静帧。
 - 完整项目视频保留完整时序和声音，使用网页转码与 faststart，不用短片替代完整演示。
 - 首页封面按显示尺寸优化，PNG 转换保留透明通道；案例图片继续懒加载、异步解码。
+- 详情图片带内嵌低清预览，手机按需加载 640／960px WebP，桌面与放大查看保留清晰源图。动图在视频真正播放前始终显示独立静帧；手机双图区域采用单列。
+- `scripts/prepare-responsive-media.py` 使用 Pillow（SVG 可配合 @resvg/resvg-js）重建手机副本，必须指定资料库归档目录；发布检查验证全部派生图片存在。
 - 手机完整项目视频显示封面、点击后播放；首页 ASCII 背景静态绘制，离屏花朵不请求遮罩。
 - 中文使用本地宋体，并提供自托管 Noto Serif SC 400／700 子集后备（SIL OFL 1.1，授权随字体发布）；首页和案例字符按需下载。修改中文后若发布检查提示缺字，使用 `fonttools[woff]` 运行 `python scripts/prepare-chinese-fonts.py /path/to/NotoSerifSC-wght.ttf` 重新生成。源字体与同目录 OFL.txt 由本地资料库管理。
 - 案例页面按路由拆分，仅在访问或导航意图出现时加载。

@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import '@/styles/case-image-viewer.css'
 import { LoopVideo } from './LoopVideo'
+import { ProgressiveImage } from './ProgressiveImage'
 
-type ImageProps = { src: string; alt: string; width?: number; height?: number; eager?: boolean; imageClassName?: string }
+type ImageProps = { src: string; alt: string; width?: number; height?: number; eager?: boolean; imageClassName?: string; fullResolution?: boolean }
 
 function ImageViewer({ src, alt, width, height }: ImageProps) {
   const viewport = useRef<HTMLDivElement>(null)
@@ -76,7 +77,7 @@ function ImageViewer({ src, alt, width, height }: ImageProps) {
       onLostPointerCapture={() => { drag.current = null; setDragging(false) }}
       onPointerCancel={() => { drag.current = null; setDragging(false) }}>
       <div className="case-image-canvas" style={{ width: fit.width * zoom, height: fit.height * zoom }}>
-        {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} onSize={(w, h) => setIntrinsic(current => current.width === w && current.height === h ? current : { width: w, height: h })} /> : <img src={src} alt={alt} width={width} height={height} draggable={false} onLoad={event => {
+        {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} controls onSize={(w, h) => setIntrinsic(current => current.width === w && current.height === h ? current : { width: w, height: h })} /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution draggable={false} onLoad={event => {
           const { naturalWidth, naturalHeight } = event.currentTarget
           if (naturalWidth && naturalHeight) setIntrinsic(current => current.width === naturalWidth && current.height === naturalHeight ? current : { width: naturalWidth, height: naturalHeight })
         }} />}
@@ -88,7 +89,7 @@ function ImageViewer({ src, alt, width, height }: ImageProps) {
 export function ZoomableCaseImage(props: ImageProps) {
   return <Dialog>
     <DialogTrigger asChild><button type="button" className="case-image-trigger" aria-label={`放大查看：${props.alt}`}>
-      {props.src.endsWith('.mp4') ? <LoopVideo {...props} className={props.imageClassName} /> : <img src={props.src} alt={props.alt} width={props.width} height={props.height} className={props.imageClassName} loading={props.eager ? 'eager' : 'lazy'} fetchPriority={props.eager ? 'high' : 'auto'} decoding="async" />}
+      {props.src.endsWith('.mp4') ? <LoopVideo {...props} className={props.imageClassName} /> : <ProgressiveImage src={props.src} alt={props.alt} width={props.width} height={props.height} className={props.imageClassName} eager={props.eager} fullResolution={props.fullResolution} />}
       <span className="case-image-hint" aria-hidden="true"><ZoomIn size={20} /></span>
     </button></DialogTrigger>
     <DialogContent className="case-image-dialog" overlayClassName="case-image-overlay" showCloseButton={false}><ImageViewer {...props} /></DialogContent>

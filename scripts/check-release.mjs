@@ -9,6 +9,13 @@ async function files(dir) {
 const all = await files(resolve(root, 'dist'))
 let total = 0
 const failures = []
+const responsiveMedia = JSON.parse(await readFile(resolve(root, 'src/content/media-images.generated.json'), 'utf8'))
+for (const [source, asset] of Object.entries(responsiveMedia)) {
+  if (!asset.preview.startsWith('data:image/webp;base64,')) failures.push(`${source}: 缺少内嵌预览`)
+  for (const path of [source, ...asset.variants.map(v => v.src)]) {
+    try { await stat(resolve(root, 'dist', path.slice(1))) } catch { failures.push(`缺少渐进图片 ${path}`) }
+  }
+}
 // Copy edits must remain covered by both licensed Chinese webfont weights.
 // Keep this in the release check so a new character cannot silently fall back
 // to a sans-serif font on a phone without locally installed Songti.
@@ -50,7 +57,7 @@ for (const file of all) {
         if (selectors.includes('.da-topbar .work-menu-panel') && standard?.includes('blur(')) glass.menuBlur = true
       }
     }
-    for (const match of text.matchAll(/["'`(](\/(?:cases|home|flowers|brands|fonts|influence|licenses)\/[^\s"'`<>?${})]+\.[a-z0-9]+)["'`)]/gi)) {
+    for (const match of text.matchAll(/["'`(](\/(?:cases|home|flowers|brands|fonts|influence|licenses|media)\/[^\s"'`<>?${})]+\.[a-z0-9]+)["'`)]/gi)) {
       try { await stat(resolve(root, 'dist', match[1].slice(1))) } catch { failures.push(`缺少资源 ${match[1]}`) }
     }
   }

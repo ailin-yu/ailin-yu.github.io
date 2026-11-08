@@ -1,6 +1,6 @@
 .case-image-overlay[data-slot=dialog-overlay] { z-index:80; }
 .case-image-trigger { display:block; position:relative; width:100%; padding:0; border:0; border-radius:16px; background:transparent; cursor:zoom-in; }
-.case-image-trigger > :is(img,video) { display:block; width:100%; height:auto; }
+.case-image-trigger > :is(img,video,.loop-video) { display:block; width:100%; height:auto; }
 .case-image-trigger:focus-visible { outline:2px solid var(--brand); outline-offset:4px; }
 .case-image-hint { position:absolute; right:16px; bottom:16px; display:grid; place-items:center; width:44px; height:44px; border-radius:50%; color:var(--foreground); background:color-mix(in srgb,var(--surface) 90%,transparent); box-shadow:0 2px 12px color-mix(in srgb,var(--foreground) 12%,transparent); opacity:0; transition:opacity .16s; }
 .case-image-trigger:is(:hover,:focus-visible) .case-image-hint { opacity:1; }
@@ -15,7 +15,7 @@
 .case-image-viewport[data-zoomed=true] { cursor:grab; }
 .case-image-viewport[data-dragging=true] { cursor:grabbing; user-select:none; }
 .case-image-canvas { display:flex; align-items:center; justify-content:center; min-width:100%; min-height:100%; }
-.case-image-canvas :is(img,video) { display:block; flex:none; width:100%; height:100%; object-fit:contain; max-width:none; pointer-events:none; }
+.case-image-canvas > :is(img,video,.loop-video) { display:block; flex:none; width:100%; height:100%; object-fit:contain; max-width:none; pointer-events:none; }
 @media (hover:none) { .case-image-hint { opacity:1; } }
 @media (max-width:767px) {
  .case-image-dialog[data-slot=dialog-content] { width:100vw; height:100svh; border:0; border-radius:0; }
@@ -25,3 +25,13 @@
  .case-image-trigger { border-radius:12px; }
 }
 @media (prefers-reduced-motion:reduce) { .case-image-hint { transition:none; } }
+
+/* A real preview remains underneath video, including blocked iOS autoplay. */
+.loop-video { display:block; position:relative; width:100%; overflow:hidden; border-radius:inherit; }
+#root .loop-video > img,#root .project-figure .loop-video > img { display:block; width:100%; height:100%; border-radius:inherit; }
+#root .loop-video > video,#root .project-figure .loop-video > video { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:fill; opacity:0; border-radius:inherit; background:transparent; }
+#root .loop-video[data-video-ready="true"] > video { opacity:1; }
+.case-image-canvas > .loop-video { position:relative; flex:none; }
+#root .case-image-canvas .loop-video > img { height:100%; object-fit:contain; }
+#root .case-image-canvas .loop-video > video { object-fit:contain; pointer-events:auto; }
+#root .case-image-canvas .loop-video > video[controls] { opacity:1; }

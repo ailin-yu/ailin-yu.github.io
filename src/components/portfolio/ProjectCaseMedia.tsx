@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'motion/react'
-import { preloadProjectPoster } from '@/lib/project-entry-transition'
 import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { imageAsset } from '@/lib/media-images'
+import { ProgressiveImage } from './ProgressiveImage'
 
 // Shared media primitives; Data Agent keeps the supplied Figma placeholder geometry.
 export function MediaSlot({ name, className = '' }: { name: string; className?: string }) {
@@ -26,10 +27,13 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster?: str
   const reduced = useReducedMotion()
   const mobile = useMediaQuery('(max-width: 767px), (pointer: coarse)')
   const autoplay = !reduced && !mobile
+  const [loadedPoster, setLoadedPoster] = useState<{ source: string; url: string } | null>(null)
+  const [failed, setFailed] = useState(false)
+  const preview = poster ? imageAsset(poster)?.preview : undefined
+  const visiblePoster = loadedPoster && loadedPoster.source === poster ? loadedPoster.url : preview || poster
   useEffect(() => {
     const video = ref.current
     if (!video) return
-    preloadProjectPoster(video)
     let inView = false
     const sync = () => {
       if (!inView || document.hidden) {
@@ -44,10 +48,17 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster?: str
     document.addEventListener('visibilitychange', sync)
     return () => { observer.disconnect(); document.removeEventListener('visibilitychange', sync); automaticPause.current = true; video.pause() }
   }, [autoplay])
-  return <div className="da-hero-video" data-project-entry-target><video ref={ref} src={src} poster={poster} aria-label={label} controls autoPlay={autoplay} muted playsInline preload={mobile || reduced ? 'none' : 'metadata'} onPause={event => {
+  return <div className="da-hero-video project-video-with-preview" data-video-failed={failed} data-project-entry-target><video ref={ref} src={src} poster={visiblePoster} aria-label={label} controls autoPlay={autoplay} muted playsInline preload={mobile || reduced ? 'none' : 'metadata'} onError={() => setFailed(true)} onPlaying={() => setFailed(false)} onPause={event => {
     const video = event.currentTarget
     if (automaticPause.current) automaticPause.current = false
     else if (!video.ended) video.dataset.userPaused = 'true'
-  }} onPlay={event => { automaticPause.current = false; delete event.currentTarget.dataset.userPaused }} /></div>
+  }} onPlay={event => { automaticPause.current = false; delete event.currentTarget.dataset.userPaused }} />
+    {poster && <ProgressiveImage src={poster} alt="" aria-hidden="true" className="project-video-poster" eager onLoad={event => setLoadedPoster({ source: poster, url: event.currentTarget.currentSrc })} />}
+    {failed && <button type="button" className="project-video-retry" onClick={() => {
+      const video = ref.current
+      if (!video) return
+      setFailed(false); video.load(); void video.play().catch(() => setFailed(true))
+    }}>播放视频</button>}
+  </div>
 }
 

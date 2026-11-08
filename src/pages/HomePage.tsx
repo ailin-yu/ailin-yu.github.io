@@ -101,7 +101,7 @@ function HomeWork() {
       if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1) }
       if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); stopRail.current(); rail.current?.scrollTo({ left: event.key === 'Home' ? 0 : rail.current.scrollWidth, behavior: 'instant' }) }
     }}>
-      {homeDesignProjects.map(project => <article className="figma-work-card" key={project.slug}><a href={`#/projects/${project.slug}`} className="figma-card-link" aria-label={`查看 ${project.title}`} onClick={event => enter(event, project.slug, !!project.kind)} onFocus={() => project.kind && warmCase(project.kind)} onPointerEnter={event => { if (event.pointerType === 'mouse' && project.kind) warmCase(project.kind) }}>
+      {homeDesignProjects.map(project => <article className="figma-work-card" key={project.slug}><a href={`#/projects/${project.slug}`} className="figma-card-link" aria-label={`查看 ${project.title}`} onClick={event => enter(event, project.slug, !!project.kind)} onPointerDown={() => project.kind && warmCase(project.kind, project.slug)} onFocus={() => project.kind && warmCase(project.kind, project.slug)} onPointerEnter={event => { if (event.pointerType === 'mouse' && project.kind) warmCase(project.kind, project.slug) }}>
         <WorkCover cover={project.cover} title={project.title} />
         <svg className="figma-card-caption" viewBox="0 0 372 88" aria-hidden="true"><text className="figma-card-title" x="8" y="45.87">{project.title}</text><text className="figma-card-subtitle" x="8" y="75.76">{project.subtitle}</text></svg><h3 className="sr-only">{project.title}</h3><p className="sr-only">{project.subtitle}</p>
       </a></article>)}

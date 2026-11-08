@@ -1,21 +1,25 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { ProgressiveImage } from './ProgressiveImage'
+import { imageAsset } from '@/lib/media-images'
 
-/** GIF replacement: fetch only when visible, pause offscreen and in background tabs. */
-export function LoopVideo({ src, alt, width, height, className, onSize }: {
-  src: string; alt: string; width?: number; height?: number; className?: string
+/** Prepare the still before arrival; only visible clips request video bytes. */
+export function LoopVideo({ src, alt, width, height, className, onSize, controls = false }: {
+  src: string; alt: string; width?: number; height?: number; className?: string; controls?: boolean
   onSize?: (width: number, height: number) => void
 }) {
   const ref = useRef<HTMLVideoElement>(null)
+  const [playingSrc, setPlayingSrc] = useState('')
+  const poster = src.replace(/\.mp4$/, '-poster.webp')
+  const [loadedPoster, setLoadedPoster] = useState<{ source: string; url: string } | null>(null)
+  const visiblePoster = loadedPoster && loadedPoster.source === poster ? loadedPoster.url : imageAsset(poster)?.preview
   useEffect(() => {
     const video = ref.current
     if (!video) return
     let visible = false
     const sync = () => {
       if (!visible || document.hidden) { video.pause(); return }
-      if (!video.getAttribute('src')) {
-        video.poster = src.replace(/\.mp4$/, '-poster.webp')
-        video.src = src
-      }
+      if (!video.getAttribute('src')) video.src = src
+      // Low Power Mode can reject autoplay. The real still stays visible.
       void video.play().catch(() => {})
     }
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync() })
@@ -23,5 +27,10 @@ export function LoopVideo({ src, alt, width, height, className, onSize }: {
     document.addEventListener('visibilitychange', sync)
     return () => { observer.disconnect(); document.removeEventListener('visibilitychange', sync); video.pause(); video.removeAttribute('src'); video.load() }
   }, [src])
-  return <video ref={ref} className={className} width={width} height={height} aria-label={alt} muted loop playsInline preload="none" disablePictureInPicture onLoadedMetadata={event => onSize?.(event.currentTarget.videoWidth, event.currentTarget.videoHeight)} />
+  return <span className={`loop-video ${className || ''}`} style={{ aspectRatio: `${width || 16} / ${height || 9}` }} data-video-ready={playingSrc === src}>
+    <ProgressiveImage src={poster} alt={alt} width={width} height={height} eager={controls} onLoad={event => setLoadedPoster({ source: poster, url: event.currentTarget.currentSrc })} />
+    <video ref={ref} width={width} height={height} poster={visiblePoster} aria-label={alt} controls={controls} muted loop playsInline preload="none" disablePictureInPicture
+      onPlaying={() => setPlayingSrc(src)} onError={() => setPlayingSrc('')}
+      onLoadedMetadata={event => onSize?.(event.currentTarget.videoWidth, event.currentTarget.videoHeight)} />
+  </span>
 }
