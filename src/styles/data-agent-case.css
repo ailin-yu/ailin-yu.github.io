@@ -299,8 +299,7 @@
  #cloudai-genui-comparison > .project-media-columns { grid-template-columns:minmax(0,44604fr) minmax(0,43625fr); align-items:start; }
 }
 @media (max-width:767px) {
- #cloudai-genui-comparison > .project-media-columns > .project-figure { justify-self:center; }
- #cloudai-genui-comparison > .project-media-columns > .project-figure:nth-child(2) { width:97.8051295848%; }
+ #cloudai-genui-comparison > .project-media-columns > .project-figure { justify-self:stretch; width:100%; }
 }
 .project-figure { min-width:0; }
 .project-diagram-scroll { max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:thin; border-radius:16px; }
