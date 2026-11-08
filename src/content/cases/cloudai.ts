@@ -5,28 +5,28 @@ export const cloudaiCase: ProjectCase = {
   slug: 'cloudai', title: 'CloudAI Design', role: '设计系统核心成员', state: 'draft', source: 'docs/projects/CloudAI-内容Spec.md',
   hero: { src: '/cases/cloudai/hero.webp', alt: 'CloudAI Design 设计工程资产：模板、组件与设计规则', width: 4246, height: 1518 },
   overview: [
-    'Agent 可以生成页面和代码，但云业务的信息层级、组件用法与交互边界仍需要设计判断。CloudAI Design 将这些经验沉淀为可调用的设计能力。',
+    'Agent 可以生成页面和代码，但真实产品的信息层级、组件用法与交互边界仍需要设计判断。CloudAI Design 将这些经验沉淀为可调用的设计能力。',
     '研发时，Agent 根据需求调用设计规则、组件和模板，生成设计规格与页面代码；Agent 产品运行时，通过 CloudAI 提供的 GenUI 能力，根据当前任务和业务结果组织界面。',
-    '作为项目核心成员，我与团队从 Data Agent、AIDBS 的实践中提炼设计声明与体验范式，并建设支撑 GenUI 的组件、模板及使用规则。',
+    '作为项目核心成员，我与团队从 Data Agent、AIDBS 的实践中提炼设计声明与体验范式，并建设支撑 GenUI 的组件、模板及渲染规则。',
   ],
   credits: [{ label: '作者', names: ['Yan Zhu', 'Ailin Yu'] }],
   highlights: { label: '设计与实践', english: 'Design & Practice', items: [
     {
-      id: 'cloudai-rules', title: '让设计能力进入生成过程', outlineLabel: '设计能力工程化', paragraphs: [
-        'Design I/O 把设计知识放入需求到代码的不同环节：先依据产品需求生成或补全 Design Spec，再调用布局、状态与信息层级等规则，选择组件和模板，并通过 design token 将视觉规范带入实现。',
-        '设计声明提供业务与体验要求，执行契约规定资产的调用方式。Agent 在生成时获得相应的规则与实现依据，让设计判断落实到页面与代码中。',
+      id: 'cloudai-rules', title: '让设计能力进入开发过程', outlineLabel: '设计能力工程化', paragraphs: [
+        '我们按设计的不同阶段拆解知识与资产，整理成 Agent 可以读取和使用的声明文件。',
+        '再通过 Skill 编排，将这些声明接入从需求到代码的不同环节，让 Agent 按需调用相应的设计规则与资产。我们把这个过程称为 Design I/O。',
       ], media: [
         { src: '/cases/cloudai/design-io.png', alt: 'Design I/O：Agent 从产品需求生成 Design Spec 与代码，在相应环节调用设计规则、组件与模板，并注入 design token', width: 2374, height: 1844, caption: 'Design I/O · 在生成的不同环节提供相应的设计知识。' },
       ], subsections: [
-        { id: 'cloudai-agent-components', title: '复用常见的 Agent 交互', paragraphs: [
-          'Agent Components 将消息、输入、执行过程与结果交付等常见交互沉淀为可复用组件，支持 Agent 产品的页面开发。面向运行时的动态生成，GenUI 还需要在通用组件之上补充云业务语义、组合方式与任务模板，指导信息如何组织。',
+        { id: 'cloudai-agent-components', title: '让 Agent 理解并使用组件', paragraphs: [
+          '以预定义的 Agent Components 为例，Component.md 作为总入口，维护组件清单与路由，指向各组件的独立 Markdown 文档。每份文档写明适用场景、设计语义及对应源码，让 Agent 在选择组件时，也能获得相应的设计依据与实现方式。',
         ], media: [
           { src: '/cases/cloudai/agent-components.webp', alt: 'Agent Components：布局、消息、输入、执行与协作等 20 项 Agent 界面组件', width: 1484, height: 1060, caption: 'Agent Components' },
         ] },
       ],
     },
     {
-      id: 'cloudai-genui', title: '让界面随任务组织', outlineLabel: 'GenUI 动态交互', paragraphs: [
+      id: 'cloudai-genui', title: '让界面随任务动态组织', outlineLabel: 'GenUI 动态交互', paragraphs: [
         '在各类云场景中，Agent 给出结果后，用户往往还需要补充条件、比较方案或确认操作。GenUI 根据当前任务与业务结果，动态组合信息和操作入口，让用户在对话中理解结果并继续完成任务。',
         '解释性内容可继续使用自然语言，高频稳定的流程保留固定页面；当信息结构与操作需求随任务变化时，由 GenUI 动态组织界面。强事务、字段复杂的配置仍交由控制台承接。',
       ], subsections: [
@@ -43,7 +43,7 @@ export const cloudaiCase: ProjectCase = {
           ],
         },
         {
-          id: 'cloudai-genui-assets', title: '将云业务语义沉淀为组件与模板', paragraphs: [
+          id: 'cloudai-genui-assets', title: '构建 GenUI 设计资产', paragraphs: [
             '社区已有 json-render、A2UI、OpenUI 等 GenUI 开源方案，可结合 shadcn 等组件库生成交互界面。云场景还需要表达业务含义与任务关系：例如在实例诊断中，结论需要有指标和趋势支撑，操作建议需要同时说明影响与确认方式。',
             '这些关系需要进入可复用的设计资产。我们在通用组件之上扩展云业务组件，将相互关联的信息与操作沉淀为具有业务语义的 Block；再通过 GenUI Template 示范典型信息结构，配合使用规则，指导 Agent 选择与组合组件。',
           ], media: [
@@ -62,7 +62,7 @@ export const cloudaiCase: ProjectCase = {
     },
     {
       id: 'cloudai-business', title: '把设计资产带入真实项目', outlineLabel: '项目协作与复用', paragraphs: [
-        'CloudAI 的设计资产已接入 Data Agent、AIDBS 等项目仓库。已有资产能够覆盖的需求，团队共享规则完成生成与评审，设计按需参与修改；需要探索新体验的关键场景，设计从需求与原型阶段深入参与，推进到代码交付。这两类协作工作流已被 10+ 项目复用。',
+        'CloudAI 的设计工程已接入 Data Agent、AIDBS 等项目仓库，支撑 AI Native 的协同工作流。已有资产能够覆盖的需求，团队共享规则完成生成与评审，设计按需参与修改；需要探索新体验的关键场景，设计从需求与原型阶段深入参与，推进到代码交付。这两类协作工作流已被 10+ 项目复用。',
       ], subsections: [
         { id: 'cloudai-business-integration', title: '标准化需求：共享规则，按需介入', paragraphs: [
           '通过 Agent.md 将 CloudAI 设计工程接入仓库级规则，PD、研发与设计在同一代码仓库中使用 Agent 时，都能调用并遵循同一套设计知识。',
