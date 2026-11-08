@@ -9,6 +9,27 @@ async function files(dir) {
 const all = await files(resolve(root, 'dist'))
 let total = 0
 const failures = []
+// Copy edits must remain covered by both licensed Chinese webfont weights.
+// Keep this in the release check so a new character cannot silently fall back
+// to a sans-serif font on a phone without locally installed Songti.
+const fontCss = await readFile(resolve(root, 'src/styles/chinese-fonts.css'), 'utf8')
+const coverage = new Map([[400, new Set()], [700, new Set()]])
+for (const face of fontCss.matchAll(/@font-face\s*\{([^}]+)\}/g)) {
+  const weight = Number(/font-weight:\s*(\d+)/.exec(face[1])?.[1])
+  const ranges = /unicode-range:\s*([^;]+)/.exec(face[1])?.[1] || ''
+  for (const range of ranges.matchAll(/U\+([\dA-F]+)(?:-([\dA-F]+))?/gi)) {
+    for (let cp = parseInt(range[1], 16); cp <= parseInt(range[2] || range[1], 16); cp++) coverage.get(weight)?.add(cp)
+  }
+}
+const required = new Set()
+for (const file of await files(resolve(root, 'src'))) {
+  if (!['.ts', '.tsx', '.json'].includes(extname(file))) continue
+  for (const char of (await readFile(file, 'utf8')).match(/[\u3000-\u303f\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]/gu) || []) required.add(char)
+}
+for (const [weight, chars] of coverage) {
+  const missing = [...required].filter(char => !chars.has(char.codePointAt(0)))
+  if (missing.length) failures.push(`中文字体 ${weight} 缺少 ${missing.join('')}；请运行 scripts/prepare-chinese-fonts.py 更新子集`)
+}
 // Check the minified output: a WebKit-only declaration can silently lose blur
 // in browsers that support only the standard backdrop-filter property.
 const glass = { headerReset: false, headerBackdrop: false, menuBlur: false }

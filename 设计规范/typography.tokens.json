@@ -30,7 +30,8 @@
         "The approved existing Songti dot-text interaction stays a separate effect; this file does not replace its font or motion parameters.",
         "Use body.article (alias of body.default) for case-study prose. body.articleLarge is exploratory and must not be substituted automatically.",
         "The local Vite/React app generates CSS from these tokens via scripts/design-tokens.mjs. Keep GitHub publication separate from local development.",
-        "English always uses Georgia Regular, including Latin substrings in bold Chinese prose; the local Latin face mapping does not change Chinese weight."
+        "English always uses Georgia Regular, including Latin substrings in bold Chinese prose; the local Latin face mapping does not change Chinese weight.",
+        "2026-11-08: locally installed Songti remains preferred; Portfolio Songti supplies self-hosted Noto Serif SC WOFF2 subsets (400/700, OFL) when missing, covering homepage and all case studies. Mobile case body uses regular 400; headings retain their hierarchy. Never redistribute Apple font files."
       ],
       "sources": {
         "appleFonts": "https://developer.apple.com/fonts/system-fonts/"
@@ -48,6 +49,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -60,6 +62,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -72,6 +75,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -84,6 +88,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -96,6 +101,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -108,6 +114,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]
@@ -120,6 +127,7 @@
           "Songti SC",
           "STSong",
           "SimSun",
+          "Portfolio Songti",
           "Noto Serif CJK SC",
           "serif"
         ]

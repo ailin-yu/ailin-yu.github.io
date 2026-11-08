@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
 import { preloadProjectPoster } from '@/lib/project-entry-transition'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 // Shared media primitives; Data Agent keeps the supplied Figma placeholder geometry.
 export function MediaSlot({ name, className = '' }: { name: string; className?: string }) {
@@ -23,6 +24,8 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster?: str
   const ref = useRef<HTMLVideoElement>(null)
   const automaticPause = useRef(false)
   const reduced = useReducedMotion()
+  const mobile = useMediaQuery('(max-width: 767px), (pointer: coarse)')
+  const autoplay = !reduced && !mobile
   useEffect(() => {
     const video = ref.current
     if (!video) return
@@ -31,7 +34,7 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster?: str
     const sync = () => {
       if (!inView || document.hidden) {
         if (!video.paused) { automaticPause.current = true; video.pause() }
-      } else if (!reduced && !video.ended && video.dataset.userPaused !== 'true') void video.play().catch(() => {})
+      } else if (autoplay && !video.ended && video.dataset.userPaused !== 'true') void video.play().catch(() => {})
     }
     const observer = new IntersectionObserver(([entry]) => {
       inView = entry.isIntersecting && entry.intersectionRatio >= .15
@@ -40,8 +43,8 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster?: str
     observer.observe(video)
     document.addEventListener('visibilitychange', sync)
     return () => { observer.disconnect(); document.removeEventListener('visibilitychange', sync); automaticPause.current = true; video.pause() }
-  }, [reduced])
-  return <div className="da-hero-video" data-project-entry-target><video ref={ref} src={src} poster={poster} aria-label={label} controls autoPlay={!reduced} muted playsInline preload="metadata" onPause={event => {
+  }, [autoplay])
+  return <div className="da-hero-video" data-project-entry-target><video ref={ref} src={src} poster={poster} aria-label={label} controls autoPlay={autoplay} muted playsInline preload={mobile || reduced ? 'none' : 'metadata'} onPause={event => {
     const video = event.currentTarget
     if (automaticPause.current) automaticPause.current = false
     else if (!video.ended) video.dataset.userPaused = 'true'

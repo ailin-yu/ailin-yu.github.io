@@ -39,9 +39,18 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle'
     const reduced = matchMedia('(prefers-reduced-motion: reduce)')
     const fine = matchMedia('(pointer: fine)')
+    const compact = matchMedia('(max-width: 767px)')
+    const animateBackground = () => !reduced.matches && fine.matches && !compact.matches
     const pointer = { x: 0, y: 0, active: false }
     let particles: Particle[] = [], frame = 0, last = 0, visible = false, disposed = false
-    let imageLoaded = false, sampled = false
+    let imageLoaded = false, sampled = false, sourceRequested = false
+    const image = new Image()
+    const loadSource = () => {
+      if (sourceRequested || cachedParticles || disposed) return
+      sourceRequested = true
+      image.decoding = 'async'
+      image.src = `/home/figma/${flower ? 'flower-source' : 'hero-dot-source'}.webp`
+    }
     let initialize = () => {}
     const transitioning = () => document.documentElement.hasAttribute('data-project-entry')
     let flowTime = 0, flowLast = 0
@@ -62,7 +71,7 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
       const base = clamp((innerHeight * .95 - ground) / (innerHeight * .45))
       return clamp((base - stage * .035) / .86)
     }
-    const rasterKey = (progress: string) => `${cacheKey}:${theme}:${flowerTone}:${tintHex}:${dpr}:${reduced.matches}:${progress}`
+    const rasterKey = (progress: string) => `${cacheKey}:${theme}:${flowerTone}:${tintHex}:${dpr}:${reduced.matches}:${animateBackground()}:${progress}`
     const rememberRaster = () => {
       if (!sampled || canvas.dataset.ready !== 'true' || pointer.active || particles.some(p => p.mix > .001 || Math.abs(p.x) + Math.abs(p.y) > .01)) return
       const copy = document.createElement('canvas')
@@ -85,7 +94,7 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
       const dt = last ? Math.min((now - last) / 16.667, 2) : 1
       last = now
       // Only the background's glyph clock advances; its source coordinates stay fixed.
-      if (!flower && !reduced.matches) flowTime += flowLast ? Math.max(0, Math.min((now - flowLast) / 1000, .05)) : 0
+      if (!flower && animateBackground()) flowTime += flowLast ? Math.max(0, Math.min((now - flowLast) / 1000, .05)) : 0
       flowLast = now
       const growth = growthProgress()
       const occupied = new Set<string>()
@@ -144,8 +153,8 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
       canvas.dataset.symbols = String(hovered)
       canvas.dataset.visibleParticles = String(shown)
       if (flower) canvas.dataset.growthProgress = growth.toFixed(4)
-      else { canvas.dataset.flowTime = flowTime.toFixed(4); canvas.dataset.flowState = reduced.matches ? 'static' : 'running'; canvas.dataset.renderMode = 'ascii-fixed' }
-      return moving || (!reduced.matches && (!flower || pointer.active))
+      else { canvas.dataset.flowTime = flowTime.toFixed(4); canvas.dataset.flowState = animateBackground() ? 'running' : 'static'; canvas.dataset.renderMode = 'ascii-fixed' }
+      return moving || (!reduced.matches && (flower ? pointer.active : animateBackground()))
     }
     const tick = (now: number) => {
       frame = 0
@@ -179,14 +188,15 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
     document.addEventListener('visibilitychange', hide)
     document.addEventListener('portfolio:project-transition-end', wake)
     reduced.addEventListener('change', reset)
+    fine.addEventListener('change', reset)
+    compact.addEventListener('change', reset)
     if (flower) { window.addEventListener('scroll', wake, { passive: true }); window.addEventListener('resize', wake) }
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
-      if (visible) { if (imageLoaded) initialize(); wake() }
+      if (visible) { loadSource(); if (imageLoaded) initialize(); wake() }
       else { pointer.active = false; cancelAnimationFrame(frame); frame = 0; last = 0 }
     }, { rootMargin: '20px' })
     observer.observe(canvas)
-    const image = new Image()
     initialize = () => {
       if (disposed || !visible || !imageLoaded || sampled) return
       sampled = true
@@ -271,13 +281,13 @@ export function AsciiParticles({ variant, stage = 0, eventTarget, flowerTone = '
     image.onload = () => { imageLoaded = true; initialize() }
     image.onerror = () => { if (!disposed) { canvas.dataset.ready = 'false'; canvas.dataset.failed = 'true'; setReady(false) } }
     if (cachedParticles) { imageLoaded = true; initialize() }
-    else image.src = `/home/figma/${flower ? 'flower-source' : 'hero-dot-source'}.webp`
     return () => {
       rememberRaster()
       disposed = true; image.onload = null; image.onerror = null
       cancelAnimationFrame(frame); observer.disconnect()
       target.removeEventListener('pointermove', move); target.removeEventListener('pointerleave', reset)
       window.removeEventListener('blur', reset); document.removeEventListener('visibilitychange', hide); reduced.removeEventListener('change', reset)
+      fine.removeEventListener('change', reset); compact.removeEventListener('change', reset)
       document.removeEventListener('portfolio:project-transition-end', wake)
       window.removeEventListener('scroll', wake); window.removeEventListener('resize', wake)
     }

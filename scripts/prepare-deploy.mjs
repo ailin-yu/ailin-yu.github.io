@@ -9,5 +9,5 @@ for (const path of ['src', 'public', '.github', '设计规范', 'index.html', 'p
   await cp(resolve(root, path), resolve(output, path), { recursive: true })
 }
 await mkdir(resolve(output, 'scripts'))
-for (const path of ['design-tokens.mjs', 'design-tokens.test.mjs', 'home-gallery.test.mjs', 'check-release.mjs', 'prepare-deploy.mjs']) await cp(resolve(root, 'scripts', path), resolve(output, 'scripts', path))
+for (const path of ['design-tokens.mjs', 'design-tokens.test.mjs', 'home-gallery.test.mjs', 'check-release.mjs', 'prepare-deploy.mjs', 'prepare-chinese-fonts.py']) await cp(resolve(root, 'scripts', path), resolve(output, 'scripts', path))
 console.log(`GitHub source: ${output}\nStatic site: ${resolve(root, 'dist')}`)
