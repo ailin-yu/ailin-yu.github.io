@@ -50,15 +50,20 @@ export function bindImageTouchEvents(root: HTMLElement, controller: ImageGesture
     callbacks.dragging(controller.pointers.size > 0)
     callbacks.update()
   }
+  // WebKit dispatches proprietary gestures alongside touches. Do not allow its
+  // native video/page zoom to run in parallel with our image-local transform.
+  const preventNativeGesture = (event: Event) => { if (event.cancelable) event.preventDefault() }
   root.addEventListener('touchstart', start, { passive: false })
   root.addEventListener('touchmove', move, { passive: false })
   root.addEventListener('touchend', finish, { passive: false })
   root.addEventListener('touchcancel', finish, { passive: false })
+  for (const type of ['gesturestart', 'gesturechange', 'gestureend']) root.addEventListener(type, preventNativeGesture, { passive: false, capture: true })
   return () => {
     root.removeEventListener('touchstart', start)
     root.removeEventListener('touchmove', move)
     root.removeEventListener('touchend', finish)
     root.removeEventListener('touchcancel', finish)
+    for (const type of ['gesturestart', 'gesturechange', 'gestureend']) root.removeEventListener(type, preventNativeGesture, { capture: true })
     controller.cancel()
   }
 }

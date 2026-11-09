@@ -148,3 +148,12 @@ test('native touch cancellation and unmount remove active touches and listeners'
   assert.equal(f.send('touchstart', [finger]).defaultPrevented, false)
   assert.equal(f.controller.pointers.size, 0)
 })
+
+test('WebKit gesture events cannot start native video zoom in parallel', () => {
+  const f = touchFixture()
+  for (const type of ['gesturestart', 'gesturechange', 'gestureend']) {
+    assert.equal(f.send(type, []).defaultPrevented, true)
+  }
+  f.cleanup()
+  assert.equal(f.send('gesturestart', []).defaultPrevented, false)
+})
