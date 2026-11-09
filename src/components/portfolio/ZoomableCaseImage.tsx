@@ -4,6 +4,7 @@ import { LoopVideo } from './LoopVideo'
 import { ProgressiveImage } from './ProgressiveImage'
 import { imageAsset } from '@/lib/media-images'
 import { useImageGestures } from './useImageGestures'
+import { ExpandedVideoControls } from './ExpandedVideoControls'
 import '@/styles/case-image-viewer.css'
 
 type ImageProps = { src: string; alt: string; width?: number; height?: number; eager?: boolean; imageClassName?: string; fullResolution?: boolean }
@@ -12,6 +13,7 @@ type ZoomOrigin = { x: number; y: number; width: number; height: number; preview
 /** The media itself expands, with no dialog surface, toolbar or corner icon. */
 function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: ImageProps & { origin: ZoomOrigin; trigger: HTMLButtonElement; onClose: () => void }) {
   const root = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [visible, setVisible] = useState(false)
   const [closing, setClosing] = useState(false)
   const gap = innerWidth < 768 ? 16 : 40
@@ -88,10 +90,11 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
     <button type="button" className="case-image-zoom-dismiss" aria-label="缩小图片" onClick={dismiss} />
     <div className="case-image-zoom-media" style={style}>
       <div className="case-image-zoom-content" data-zoomed={gestures.transform.scale > 1} style={{ transform: `translate(${gestures.transform.x}px,${gestures.transform.y}px) scale(${gestures.transform.scale})` }}>
-        {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} controls /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution previewSrc={origin.preview} draggable={false} />}
-        {src.endsWith('.mp4') && <div className="case-image-gesture-surface" aria-hidden="true" style={{ bottom: Math.min(56, target.height / 4) }} />}
+        {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} videoRef={videoRef} /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution previewSrc={origin.preview} draggable={false} />}
+        {src.endsWith('.mp4') && <div className="case-image-gesture-surface" aria-hidden="true" />}
       </div>
     </div>
+    {src.endsWith('.mp4') && <ExpandedVideoControls videoRef={videoRef} />}
   </div>, document.body)
 }
 
