@@ -89,6 +89,7 @@ function ExpandedImage({ src, alt, width, height, origin, trigger, onClose }: Im
     <div className="case-image-zoom-media" style={style}>
       <div className="case-image-zoom-content" data-zoomed={gestures.transform.scale > 1} style={{ transform: `translate(${gestures.transform.x}px,${gestures.transform.y}px) scale(${gestures.transform.scale})` }}>
         {src.endsWith('.mp4') ? <LoopVideo src={src} alt={alt} width={width} height={height} controls /> : <ProgressiveImage src={src} alt={alt} width={width} height={height} eager fullResolution previewSrc={origin.preview} draggable={false} />}
+        {src.endsWith('.mp4') && <div className="case-image-gesture-surface" aria-hidden="true" style={{ bottom: Math.min(56, target.height / 4) }} />}
       </div>
     </div>
   </div>, document.body)
