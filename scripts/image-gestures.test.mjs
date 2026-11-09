@@ -84,7 +84,7 @@ function touchFixture() {
   const root = new EventTarget(), controller = create()
   const media = { closest: selector => selector === '.case-image-zoom-content' ? media : null }
   const margin = { closest: () => null }
-  const video = { closest: selector => selector === '.case-image-zoom-content' ? media : video, getBoundingClientRect: () => ({ bottom: 750, height: 700 }) }
+  const controls = { closest: selector => selector === '[data-media-controls]' ? controls : null }
   const result = { updates: 0, dragging: false, suppressed: false }
   const cleanup = bindTouches(root, controller, {
     update: () => result.updates++, dragging: value => { result.dragging = value },
@@ -96,7 +96,7 @@ function touchFixture() {
     root.dispatchEvent(event)
     return event
   }
-  return { controller, media, margin, video, result, send, cleanup }
+  return { controller, media, margin, controls, result, send, cleanup }
 }
 
 test('native touch events pinch, then keep the remaining finger dragging horizontally', () => {
@@ -129,12 +129,12 @@ test('a pinch beginning in the margin is owned, while a fresh blank tap still cl
   f.cleanup()
 })
 
-test('native video controls receive taps and seek gestures without interference', () => {
+test('HTML playback controls receive taps and seek gestures without interference', () => {
   const f = touchFixture(), finger = touch(1, 200, 730)
-  assert.equal(f.send('touchstart', [finger], undefined, f.video).defaultPrevented, false)
+  assert.equal(f.send('touchstart', [finger], undefined, f.controls).defaultPrevented, false)
   assert.equal(f.controller.pointers.size, 0)
-  assert.equal(f.send('touchmove', [touch(1, 260, 730)], undefined, f.video).defaultPrevented, false)
-  assert.equal(f.send('touchend', [], [finger], f.video).defaultPrevented, false)
+  assert.equal(f.send('touchmove', [touch(1, 260, 730)], undefined, f.controls).defaultPrevented, false)
+  assert.equal(f.send('touchend', [], [finger], f.controls).defaultPrevented, false)
   f.cleanup()
 })
 
@@ -156,4 +156,30 @@ test('WebKit gesture events cannot start native video zoom in parallel', () => {
   }
   f.cleanup()
   assert.equal(f.send('gesturestart', []).defaultPrevented, false)
+})
+
+test('one remaining touch pans even when the WebView omitted the second touchend', () => {
+  const f = touchFixture()
+  f.send('touchstart', [touch(1, 150, 400), touch(2, 250, 400)])
+  f.send('touchmove', [touch(1, 100, 400), touch(2, 300, 400)])
+  near(f.controller.state.scale, 2)
+  f.send('touchmove', [touch(1, 160, 400)])
+  assert.equal(f.controller.pointers.size, 1)
+  near(f.controller.state.scale, 2); near(f.controller.state.x, 60)
+  f.send('touchmove', [touch(1, 40, 400)])
+  near(f.controller.state.scale, 2); near(f.controller.state.x, -60)
+  f.cleanup()
+})
+
+test('a new touch identifier recovers panning after an interrupted gesture', () => {
+  const f = touchFixture()
+  f.controller.zoomTo(2)
+  f.send('touchstart', [touch(1, 100, 400)])
+  f.send('touchmove', [touch(7, 150, 400)])
+  assert.equal(f.controller.pointers.has(1), false)
+  f.send('touchmove', [touch(7, 210, 400)])
+  near(f.controller.state.scale, 2); near(f.controller.state.x, 60)
+  f.send('touchcancel', [], [])
+  assert.equal(f.controller.pointers.size, 0)
+  f.cleanup()
 })

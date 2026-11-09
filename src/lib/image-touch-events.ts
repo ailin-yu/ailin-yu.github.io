@@ -8,20 +8,21 @@ export function bindImageTouchEvents(root: HTMLElement, controller: ImageGesture
   suppressClick: () => void
   allowMarginTap: () => void
 }) {
-  const start = (event: TouchEvent) => {
-    const touches = Array.from(event.touches)
-    const target = event.target as Element
-    const content = !!target.closest('.case-image-zoom-content')
-    if (touches.length === 1 && !content) callbacks.allowMarginTap()
-    const video = target.closest('video[controls]')
-    if (touches.length === 1 && video) {
-      const box = video.getBoundingClientRect()
-      // Keep taps and scrubbing in the native playback controls available.
-      if (touches[0].clientY > box.bottom - Math.min(56 * controller.state.scale, box.height / 4)) return
-    }
-    for (const touch of touches.slice(0, 2)) {
+  const points = (event: TouchEvent) => Array.from(event.touches).filter(touch => !(touch.target as Element | null)?.closest?.('[data-media-controls]')).slice(0, 2)
+  const reconcile = (touches: Touch[]) => {
+    const active = new Set(touches.map(touch => touch.identifier))
+    for (const id of controller.pointers.keys()) { if (!active.has(id)) controller.end(id) }
+    for (const touch of touches) {
       if (!controller.pointers.has(touch.identifier)) controller.start(touch.identifier, { x: touch.clientX, y: touch.clientY })
     }
+  }
+  const start = (event: TouchEvent) => {
+    const target = event.target as Element
+    if (target.closest('[data-media-controls]')) { callbacks.allowMarginTap(); return }
+    const touches = points(event)
+    const content = !!target.closest('.case-image-zoom-content')
+    if (touches.length === 1 && !content) callbacks.allowMarginTap()
+    reconcile(touches)
     if (content || touches.length > 1) {
       if (event.cancelable) event.preventDefault()
       callbacks.dragging(true)
@@ -29,8 +30,13 @@ export function bindImageTouchEvents(root: HTMLElement, controller: ImageGesture
     // A single untouched margin tap must still generate the close-button click.
   }
   const move = (event: TouchEvent) => {
+    if ((event.target as Element).closest('[data-media-controls]')) return
+    const touches = points(event)
+    // WebViews can cancel or omit the final event of a native pinch. The actual
+    // live TouchList is authoritative, so a remaining finger always becomes pan.
+    reconcile(touches)
     let handled = false
-    for (const touch of Array.from(event.touches)) {
+    for (const touch of touches) {
       handled = controller.move(touch.identifier, { x: touch.clientX, y: touch.clientY }) || handled
     }
     if (handled) {
@@ -40,13 +46,13 @@ export function bindImageTouchEvents(root: HTMLElement, controller: ImageGesture
     }
   }
   const finish = (event: TouchEvent) => {
-    const tracked = Array.from(event.changedTouches).some(touch => controller.pointers.has(touch.identifier))
-    if (!tracked) return
+    if ((event.target as Element).closest('[data-media-controls]')) return
+    if (!controller.pointers.size) return
     if (controller.moved) {
       if (event.cancelable) event.preventDefault()
       callbacks.suppressClick()
     }
-    for (const touch of Array.from(event.changedTouches)) controller.end(touch.identifier)
+    reconcile(points(event))
     callbacks.dragging(controller.pointers.size > 0)
     callbacks.update()
   }

@@ -44,15 +44,10 @@ export function useImageGestures(bounds: ImageBounds, root: RefObject<HTMLDivEle
         if (event.pointerType === 'touch') return
         if (event.pointerType === 'mouse' && event.button !== 0) return
         const target = event.target as Element
+        if (target.closest('[data-media-controls]')) { suppressClickUntil.current = 0; return }
         if (!controller.pointers.size && !target.closest('.case-image-zoom-content')) {
           suppressClickUntil.current = 0
           return
-        }
-        // Let native video playback/seek controls receive their own input.
-        const video = target.closest('video[controls]')
-        if (!controller.pointers.size && video) {
-          const box = video.getBoundingClientRect()
-          if (event.clientY > box.bottom - Math.min(56 * controller.state.scale, box.height / 4)) return
         }
         if (!controller.start(event.pointerId, { x: event.clientX, y: event.clientY })) return
         event.preventDefault()
@@ -72,7 +67,7 @@ export function useImageGestures(bounds: ImageBounds, root: RefObject<HTMLDivEle
         if (performance.now() < suppressClickUntil.current) { event.preventDefault(); event.stopPropagation() }
       },
       onKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-        if ((event.target as Element).closest('video')) return
+        if ((event.target as Element).closest('video,[data-media-controls]')) return
         if (!['+', '=', '-', '0'].includes(event.key)) return
         event.preventDefault()
         controller.zoomTo(event.key === '0' ? 1 : controller.state.scale + (event.key === '-' ? -.5 : .5))
