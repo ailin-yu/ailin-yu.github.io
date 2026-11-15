@@ -20,15 +20,16 @@ export const homeHeroText = [
 ] as const
 
 type WorkImage = { src: string; width: number; height: number; position?: string }
-export type HomeWorkCover = (WorkImage & { background?: WorkImage }) | { src?: never; width?: never; height?: never; background: WorkImage }
+type WorkOverlay = WorkImage & { placement: { x: number; y: number; width: number } }
+export type HomeWorkCover = ((WorkImage & { background?: WorkImage }) | { src?: never; width?: never; height?: never; background: WorkImage }) & { overlay?: WorkOverlay }
 
 export const homeDesignProjects = [
-  { slug: 'data-agent', menuDescription: '企业数据分析与持续探索', title: 'Data Agent', subtitle: 'Website, Product', cover: { src: '01.webp', width: 2048, height: 1456, background: { src: 'BG-01.webp', width: 733, height: 637 } }, kind: 'data-agent' },
-  { slug: 'aidbs', menuDescription: '面向数据库任务的 AI 工作台', title: 'AI Database Service', subtitle: 'Website, Product', cover: { src: '02.webp', width: 2048, height: 1456, background: { src: 'BG-02.webp', width: 1346, height: 1168 } }, kind: 'template' },
+  { slug: 'data-agent', menuDescription: '企业数据分析与持续探索', title: 'Data Agent', subtitle: 'Web & Mobile, Product', cover: { src: '01.webp', width: 2048, height: 1456, background: { src: 'BG-01.webp', width: 733, height: 637 }, overlay: { src: 'data-agent-phone-running.png', width: 856, height: 1776, placement: { x: 20, y: 166.859375, width: 135 } } }, kind: 'data-agent' },
+  { slug: 'aidbs', menuDescription: '面向数据库任务的 AI 工作台', title: 'AI Database Service', subtitle: 'Web, Product', cover: { src: '02.webp', width: 2048, height: 1456, background: { src: 'BG-02.webp', width: 1346, height: 1168 } }, kind: 'template' },
   { slug: 'cloudai', menuDescription: '面向 Agent 的设计工程基座', title: 'CloudAI Design', subtitle: 'A Design Toolkit to Build With', cover: { src: '03.webp', width: 1600, height: 1720 }, kind: 'template' },
   { slug: 'playbook', menuDescription: 'AI 协作与 AI 产品设计指南', title: 'Vibe Designing Playbook', subtitle: 'Practical Guide', cover: { src: '04.webp', width: 1600, height: 1720 }, kind: 'template' },
   { slug: 'cscw', menuDescription: 'Agent 过程透明度的体验研究', title: 'AI Agents Experience Research', subtitle: 'CSCW 2025', cover: { src: 'cscw-conference.webp', width: 1600, height: 2133, position: 'center 30%' }, kind: 'template' },
-  { slug: 'webide-notebook', menuDescription: '开发者体验', title: 'DMS WebIDE', subtitle: 'Developer Experience', cover: { src: 'webide.webp', width: 2880, height: 2048, background: { src: 'BG-06.webp', width: 1346, height: 1168 } }, kind: 'template' },
+  { slug: 'webide-notebook', menuDescription: '开发者体验', title: 'DMS WebIDE', subtitle: 'Web, Product', cover: { src: 'webide.webp', width: 2880, height: 2048, background: { src: 'BG-06.webp', width: 1346, height: 1168 } }, kind: 'template' },
   { slug: 'era-planet', menuDescription: 'AR & 软硬件交互', title: 'Éra-Planet', subtitle: 'AR, Software & Hardware', cover: { src: '06.webp', width: 2132, height: 1600 }, kind: 'template' },
   { slug: 'future-vehicles', menuDescription: '未来交通工具概念设计', title: 'Future Vehicles', subtitle: 'Concept Design', cover: { src: '07.webp', width: 2448, height: 1728, position: '35% center' }, kind: 'template' },
 ] as const

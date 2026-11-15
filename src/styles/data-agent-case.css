@@ -65,6 +65,16 @@
 .da-design-title > span { flex:none; width:26px; color:var(--case-faint); font:400 var(--case-heading-size)/40px var(--font-home-latin); transform:translateY(-.81px); }
 .da-design-copy { margin-top:19px !important; color:var(--case-body); }
 .da-apps > .da-media-slot,.da-enterprise > figure { margin-top:29px; }
+/* Figma 168:4112: 1200 × 675, phones at x=93/460.55/828.10, y=48. */
+.da-cross-platform-media { position:relative; container-type:inline-size; aspect-ratio:1200/675; margin-top:29px; overflow:hidden; border-radius:16px; background:var(--case-placeholder); }
+#root .da-cross-platform-background { position:absolute; left:-.8333333333%; top:-9.6296296296%; width:102.3333333333%; height:158.0874074074%; max-width:none; object-fit:cover; border-radius:0; pointer-events:none; }
+.da-cross-platform-phones { position:absolute; inset:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:7.3333333333cqw; padding:4cqw 7.6958333333cqw 3.9166666667cqw 7.75cqw; }
+.da-cross-platform-phone { min-width:0; container-type:inline-size; }
+#root .da-cross-platform-phone :is(.case-image-trigger,img) { border-radius:0; }
+#root .da-cross-platform-phone .case-image-trigger > img {
+ filter:drop-shadow(0 .6cqw 1.4cqw color-mix(in srgb,var(--case-card-shadow) 22%,transparent))
+        drop-shadow(0 1.6cqw 6.4cqw color-mix(in srgb,var(--case-card-shadow) 26%,transparent));
+}
 .da-media-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28.375px 28px; }
 .da-apps > .da-media-grid { margin-top:28px; }
 .da-apps > .da-apps-overview { margin-top:29px; }
@@ -166,6 +176,10 @@
  .da-design-title > span { width:26px; font-size:var(--case-mobile-heading-size); }
  .da-design-copy,.da-analysis .da-design-copy,.da-enterprise .da-design-copy { margin-top:16px !important; }
  .da-apps > .da-media-slot,.da-enterprise > figure,.da-transparency > figure { margin-top:24px; }
+ .da-cross-platform-media { aspect-ratio:auto; margin-top:24px; border-radius:12px; }
+ #root .da-cross-platform-background { inset:0; width:100%; height:100%; }
+ .da-cross-platform-phones { position:relative; grid-template-columns:minmax(0,1fr); gap:24px; padding:24px; justify-items:center; }
+ .da-cross-platform-phone { width:100%; max-width:280px; }
  .da-media-grid { grid-template-columns:1fr; gap:24px; }
  .da-apps > .da-media-grid { margin-top:16px; }
  .da-apps > .da-apps-overview { margin-top:24px; }

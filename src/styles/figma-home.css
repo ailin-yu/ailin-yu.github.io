@@ -69,6 +69,7 @@
 #root .figma-card-cover .figma-work-flat { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
 #root .figma-card-cover .figma-work-background { position: absolute; height: 160%; width: auto; left: 50%; bottom: 0; transform: translateX(-50%); border-radius: 0; }
 #root .figma-card-cover .figma-work-foreground { position: absolute; height: 91%; width: auto; top: 9%; left: 9.6774193548%; object-fit: contain; border-radius: calc(8px * var(--cover-scale)) 0 0 0; box-shadow: 0 calc(219px * var(--cover-scale)) calc(88px * var(--cover-scale)) color-mix(in srgb,var(--home-work-shadow) 1%,transparent),0 calc(123px * var(--cover-scale)) calc(74px * var(--cover-scale)) color-mix(in srgb,var(--home-work-shadow) 4%,transparent),0 calc(55px * var(--cover-scale)) calc(55px * var(--cover-scale)) color-mix(in srgb,var(--home-work-shadow) 7%,transparent),0 calc(14px * var(--cover-scale)) calc(30px * var(--cover-scale)) color-mix(in srgb,var(--home-work-shadow) 8%,transparent); }
+#root .figma-card-cover .figma-work-overlay { position: absolute; height: auto; border-radius: 0; pointer-events: none; }
 .figma-card-link:hover .figma-card-cover { transform: translateY(-4px); }
 .figma-card-caption { display: block; width: 372px; height: 88px; overflow: visible; }
 .figma-card-title { font: 400 var(--home-card-title-size) var(--font-home-latin); letter-spacing: .02em; fill: var(--home-foreground); }

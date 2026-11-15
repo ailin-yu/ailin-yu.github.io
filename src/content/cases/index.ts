@@ -22,7 +22,7 @@ export const getProjectCase = (slug: string) => projectCases[canonicalCaseSlug(s
 export const caseSectionId = (slug: string, name: string) => `${slug}-${name}`
 export const dataAgentOutline: CaseOutlineItem[] = [
   { id: 'da-overview', label: '产品介绍', english: 'Overview' }, { id: 'da-strategy', label: '设计策略', english: 'Design Strategy' },
-  { id: 'da-highlights', label: '关键设计', english: 'Design Highlights', children: [{ id: 'da-apps', label: '01 开箱应用' }, { id: 'da-analysis', label: '02 分析体验' }, { id: 'da-enterprise', label: '03 企业级能力' }] },
+  { id: 'da-highlights', label: '关键设计', english: 'Design Highlights', children: [{ id: 'da-apps', label: '01 开箱应用' }, { id: 'da-analysis', label: '02 分析体验' }, { id: 'da-enterprise', label: '03 企业级能力' }, { id: 'da-cross-platform', label: '04 移动端' }] },
   { id: 'da-results', label: '项目结果', english: 'Results' },
 ]
 export function projectOutline(project: ProjectCase): CaseOutlineItem[] {

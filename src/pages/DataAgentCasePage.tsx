@@ -32,6 +32,12 @@ const patentOutcomes = [
   { title: '发明专利成果', detail: '' },
 ]
 
+const mobileScreens = [
+  { src: 'mobile-home.png', alt: '移动端首页：通过对话或推荐任务开始分析' },
+  { src: 'mobile-plan.png', alt: '移动端计划：查看分析任务的执行计划' },
+  { src: 'mobile-running.png', alt: '移动端运行中：查看分析进展与结果' },
+]
+
 export default function DataAgentCasePage() {
   const reducedMotion = useReducedMotion()
   return <ProjectCaseLayout slug="data-agent" title="Data Agent" role="设计负责人" hero={<ProjectVideo src="/cases/data-agent/product-film.mp4" poster="/cases/data-agent/product-film.webp" label="Data Agent 产品介绍完整视频" />}>
@@ -64,12 +70,20 @@ export default function DataAgentCasePage() {
             </section>
             <section className="da-design da-enterprise" id="da-enterprise">
               <DesignTitle number="03">连接数据与业务语义，构建企业级能力</DesignTitle>
-              <p className="da-design-copy">提供便捷的企业数据与知识接入体验，构建知识图谱让业务语义可理解、可追溯，帮助 Agent 更准确地分析。同时支持自定义 Agent 复用任务、钉钉多维表格内分析和 IM 结果推送，让 Agent 融入企业原有工作流。</p>
+              <p className="da-design-copy">提供便捷的企业数据与知识接入体验，构建知识图谱让业务语义可理解、可追溯，帮助 Agent 更准确地分析。同时支持自定义 Agent 复用任务、钉钉多维表格内分析，以及 IM Channel 接入：用户在 Web 端完成配置后，可在钉钉、飞书等常用办公渠道提问，并接收定时任务的结果推送，让 Agent 融入企业原有工作流。</p>
               <div className="da-media-grid da-enterprise-data-grid">
                 <figure className="project-figure"><div className="da-enterprise-data-frame"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/data-import-still.webp' : '/cases/data-agent/data-import.mp4'} alt="导入数据：上传文件或连接企业数据库" width={3000} height={1686} /></div><figcaption>/ 导入数据</figcaption></figure>
                 <figure className="project-figure"><div className="da-enterprise-data-frame"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/data-directory-still.webp' : '/cases/data-agent/data-directory.mp4'} alt="数据目录：浏览数据源与库表信息" width={2000} height={1125} /></div><figcaption>/ 数据目录</figcaption></figure>
               </div>
               <figure className="project-figure"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/knowledge-graph-still.webp' : '/cases/data-agent/knowledge-graph.mp4'} alt="知识图谱：查看业务实体、关系与语义信息" width={3020} height={1694} /><figcaption>/ 知识图谱</figcaption></figure>
+            </section>
+            <section className="da-design da-cross-platform" id="da-cross-platform">
+              <DesignTitle number="04">适配移动端，让数据洞察更直观</DesignTitle>
+              <p className="da-design-copy">在移动端调整信息布局与操作区域，通过生成式 UI 将数据洞察呈现为图表与卡片，帮助用户更直观地理解分析结果。</p>
+              <div className="da-cross-platform-media">
+                <img className="da-cross-platform-background" src="/cases/data-agent/mobile-background.png" width={1000} height={1000} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+                <div className="da-cross-platform-phones">{mobileScreens.map(screen => <figure className="project-figure da-cross-platform-phone" key={screen.src}><ZoomableCaseImage src={`/cases/data-agent/${screen.src}`} alt={screen.alt} width={856} height={1776} fullResolution /></figure>)}</div>
+              </div>
             </section>
           </section>
           <section className="da-results" id="da-results">
