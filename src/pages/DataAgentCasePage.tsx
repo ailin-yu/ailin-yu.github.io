@@ -2,7 +2,6 @@ import { useReducedMotion } from 'motion/react'
 import type { CSSProperties } from 'react'
 import { ProjectCaseLayout } from '@/components/portfolio/ProjectCaseLayout'
 import { ZoomableCaseImage } from '@/components/portfolio/ZoomableCaseImage'
-import { ProjectCredits } from '@/components/portfolio/ProjectCredits'
 import { caseHref } from '@/content/portfolio-catalog'
 import { DataAgentStrategyIllustration } from '@/components/portfolio/DataAgentStrategyIllustration'
 import { SectionTitle, DesignTitle, BulletTitle, ProjectVideo } from '@/components/portfolio/ProjectCaseMedia'
@@ -44,10 +43,6 @@ export default function DataAgentCasePage() {
           <section className="da-overview" id="da-overview" aria-label="产品介绍">
             <p>Data Agent 是一款企业级数据分析智能体，帮助业务人员和数据分析师利用企业数据快速获得业务洞察。它需要兼顾两类需求：业务人员需要在不会编写复杂 SQL 的情况下，快速获取支持业务判断的数据结果；数据分析师则需要核验结果、理解原因，并围绕问题持续深入探索。</p>
             <p>项目始于 2025 年 Agent 产品形态探索初期，许多交互方式仍待定义。我协助推动产品方向，与工程师协同 Coding，持续打磨产品细节。从产品落地到市场推广，每个环节都凝聚着我的心血。探索中形成的 Agent 透明度研究，也发表于 CSCW Companion 2025（第一作者），并沉淀了 3 项发明专利。</p>
-            <ProjectCredits credits={[
-              { label: '产品 & 交互设计', names: ['Ailin Yu'] },
-              { label: '品牌 & 视觉设计', names: ['Yan Zhu'] },
-            ]} />
           </section>
           <section className="da-strategy" id="da-strategy">
             <SectionTitle>Design Strategy</SectionTitle>

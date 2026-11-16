@@ -7,10 +7,6 @@ export const aidbsCase: ProjectCase = {
     '我担任设计负责人，基于 Agent Input 和 Output 与代码仓库的对照分析识别任务断点，协助推进产品方向。通过 Vibe Coding 构建可运行的 GenUI Demo，推动统一入口与场景体验方案获得产研共识，并与团队共同推进实现。',
     '随着产品形态逐步落地，我与产研团队持续打磨能力与体验，助力阿里云在 2026 年 IDC 中国 Data Agent 厂商评估中获评领导者，产品能力与战略规划评分均居首。',
   ],
-  credits: [
-    { label: '产品 & 交互设计', names: ['Ailin Yu'] },
-    { label: '品牌 & 视觉设计', names: ['Yan Zhu'] },
-  ],
   chaptersBeforeHighlights: true,
   chapters: [
     { id: 'aidbs-challenge', label: '挑战与策略', english: 'Challenge & Strategy', numbered: true, layout: 'columns', paragraphConnector: true, items: [
