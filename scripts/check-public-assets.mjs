@@ -116,6 +116,58 @@ const excluded = [
   {
     "path": "public/media/cases/data-agent/cover-960-f9fca6edc1.webp",
     "sha256": "f9fca6edc14e40ee680b10bff07c0ccb416063baaa8cc9aaa118b54a34802028"
+  },
+  {
+    "path": "public/cases/aidbs/query-distribution-source.webp",
+    "sha256": "d025be2e8ba1201b069683a9feffa141cd9107149809a2a05f37cd6d5037f8d2"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-distribution-source-640-55e95f6bf4.webp",
+    "sha256": "55e95f6bf4f70b9d060e4066f23ce7a8f1f3cbc8c7ea054f1d702b24ca50e7ff"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-distribution-source-960-5f3e6b8dd8.webp",
+    "sha256": "5f3e6b8dd84d90ebb097cbf7f648efd6225afd1173dbf283df59aa3c39ed6e49"
+  },
+  {
+    "path": "public/cases/aidbs/query-ranking-source.webp",
+    "sha256": "7698fc426624071b2aea6b258bb36bdcd8291d245412aabaa01681dea18dbf1c"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-ranking-source-640-7e21408209.webp",
+    "sha256": "7e21408209820f38f84d0065d84d35872325811bb143c762e8f783a99f2f599d"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-ranking-source-960-ad7c80d5b6.webp",
+    "sha256": "ad7c80d5b6faac771b32800150c7925364184ee689d859ea3e010cee3e80e85f"
+  },
+  {
+    "path": "public/cases/data-agent/report.webp",
+    "sha256": "82e82454da731202b516983b2f9973a0e75367da14ab156161a4c6d6fa661d34"
+  },
+  {
+    "path": "public/media/cases/data-agent/report-640-d25272552b.webp",
+    "sha256": "d25272552b5008cbff11fde7385a42f250172e99f033ba7311e640a7e5348802"
+  },
+  {
+    "path": "public/media/cases/data-agent/report-960-7f210cb6a3.webp",
+    "sha256": "7f210cb6a3adf1f77d0d2d02da1c97b9c3053bce5e55ca02344e291e15c1efbd"
+  },
+  {
+    "path": "public/cases/aidbs/query-demo.mp4",
+    "sha256": "52d1583610b3196c67fec11659111eaa164e69a6b0b5c0e73de3b9cded283c8a"
+  },
+  {
+    "path": "public/cases/aidbs/resource-options.webp",
+    "sha256": "54d4463339eb61d9cc4241a003f8e70b035fcaa76299336f11e237050677c37e"
+  },
+  {
+    "path": "public/media/cases/aidbs/resource-options-640-fbb014935a.webp",
+    "sha256": "fbb014935ab0a709b939d00c28f5e33acec72a3ae8f5d60f877148cdefea3560"
+  },
+  {
+    "path": "public/media/cases/aidbs/resource-options-960-20c334df59.webp",
+    "sha256": "20c334df5990c507fddb8a93c0aac059959b7be22981604631727cf8e5154ba1"
   }
 ]
 const deniedPaths = new Set(excluded.map(file => file.path.slice('public/'.length)))

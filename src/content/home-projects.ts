@@ -17,7 +17,7 @@ export const homeProjects: FolderProject[] = [
     summary: '看清分析进度，在关键步骤介入，取得可用的报告。',
     role: '设计负责人', topic: '产品框架 / 人机协作', caption: '任务过程 · 持续分析 · 成果交付',
     sheets: [
-      { src: '/cases/data-agent/report.webp', label: '分析产物', alt: 'Data Agent 汇报中的真实分析报告产物' },
+      { src: '/cases/data-agent/app-report-poster.webp', label: '分析产物', alt: 'Data Agent 分析报告产物示例' },
       { src: '/cases/data-agent/detail.webp', label: '任务协作', alt: 'Data Agent 任务交互的真实界面片段' },
       { src: '/cases/data-agent/overview.webp', label: '分析工作台', alt: 'Data Agent 持续分析工作台的真实界面' },
     ],
