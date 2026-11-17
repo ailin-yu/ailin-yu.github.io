@@ -62,7 +62,7 @@ export default function DataAgentCasePage() {
               <DesignTitle number="03">连接数据与业务语义，构建企业级能力</DesignTitle>
               <p className="da-design-copy">提供便捷的企业数据与知识接入体验，构建知识图谱让业务语义可理解、可追溯，帮助 Agent 更准确地分析。同时支持自定义 Agent 复用任务、钉钉多维表格内分析，以及 IM Channel 接入：用户在 Web 端完成配置后，可在钉钉、飞书等常用办公渠道提问，并接收定时任务的结果推送，让 Agent 融入企业原有工作流。</p>
               <div className="da-media-grid da-enterprise-data-grid">
-                <figure className="project-figure"><div className="da-enterprise-data-frame"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/data-import-still.webp' : '/cases/data-agent/data-import.mp4'} alt="导入数据：上传文件或连接企业数据库" width={3000} height={1686} /></div><figcaption>/ 导入数据</figcaption></figure>
+                <figure className="project-figure"><div className="da-enterprise-data-frame"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/data-import-masked-still.webp' : '/cases/data-agent/data-import-masked.mp4'} alt="导入数据：上传文件或连接企业数据库" width={3000} height={1686} /></div><figcaption>/ 导入数据</figcaption></figure>
                 <figure className="project-figure"><div className="da-enterprise-data-frame"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/data-directory-still.webp' : '/cases/data-agent/data-directory.mp4'} alt="数据目录：浏览数据源与库表信息" width={2000} height={1125} /></div><figcaption>/ 数据目录</figcaption></figure>
               </div>
               <figure className="project-figure"><ZoomableCaseImage src={reducedMotion ? '/cases/data-agent/knowledge-graph-still.webp' : '/cases/data-agent/knowledge-graph.mp4'} alt="知识图谱：查看业务实体、关系与语义信息" width={3020} height={1694} /><figcaption>/ 知识图谱</figcaption></figure>

@@ -38,8 +38,8 @@ export const cloudaiCase: ProjectCase = {
             { title: '指标与时间', copy: '用时间趋势呈现指标变化，帮助理解异常出现的过程。' },
             { title: '建议与操作', copy: '将建议、风险提示与确认入口成组呈现，便于在了解影响后作出决定。' },
           ], columns: true, media: [
-            { src: '/cases/cloudai/genui-before-cropped.svg', alt: '仅使用 shadcn 基础组件的诊断生成效果：基础卡片、仪表和推荐操作', width: 3024, height: 3490, caption: '仅使用 shadcn 基础组件。' },
-            { src: '/cases/cloudai/genui-after.webp', alt: '接入 CloudAI GenUI 设计资产的诊断生成效果：分析、发现、洞察和操作分层，趋势、SQL、风险与确认成组呈现', width: 3200, height: 3776, caption: '接入 CloudAI GenUI 设计资产。' },
+            { src: '/cases/cloudai/genui-before-masked.svg', alt: '仅使用 shadcn 基础组件的诊断生成效果：基础卡片、仪表和推荐操作', width: 3024, height: 3490, caption: '仅使用 shadcn 基础组件。' },
+            { src: '/cases/cloudai/genui-after-masked.webp', alt: '接入 CloudAI GenUI 设计资产的诊断生成效果：分析、发现、洞察和操作分层，趋势、SQL、风险与确认成组呈现', width: 3200, height: 3776, caption: '接入 CloudAI GenUI 设计资产。' },
           ],
         },
         {

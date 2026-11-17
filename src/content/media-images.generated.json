@@ -1627,5 +1627,65 @@
         "width": 960
       }
     ]
+  },
+  "/cases/cloudai/genui-before-masked.svg": {
+    "width": 3024,
+    "height": 3490,
+    "preview": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAAAQBACdASokACoAPxVwrFCspiQisdzKAZAiiWkAAGTINa6yLA5Qu/MnwAD+7445jbUu31kRrFnWGxpfRCE4OZVCbQledGScoGVEXBhaBkhcxxD/c1+Pz0h9i7+F5mUNOMjhzSTGb+0SAAAA",
+    "variants": [
+      {
+        "src": "/media/cases/cloudai/genui-before-masked-640-d051380331.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/cases/cloudai/genui-before-masked-960-501c0ca2b6.webp",
+        "width": 960
+      }
+    ]
+  },
+  "/cases/cloudai/genui-after-masked.webp": {
+    "width": 2034,
+    "height": 2400,
+    "preview": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAACQAwCdASokACoAPxl+tlSsqCWjJzgMkZAjCWkAABpO85SECbAAAP7vZ9k1q02X6gIVoWsrsHxiS/5ryFOLPucKTB674zrnYh9BIhwt7NBbEma83DslQzYvAAA=",
+    "variants": [
+      {
+        "src": "/media/cases/cloudai/genui-after-masked-640-13e9d1e860.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/cases/cloudai/genui-after-masked-960-68d3bbf26d.webp",
+        "width": 960
+      }
+    ]
+  },
+  "/cases/data-agent/data-import-masked-poster.webp": {
+    "width": 2400,
+    "height": 1348,
+    "preview": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAwCdASokABQAPxmEvVasqCakpWmZkCMJaQAAJrDOxAAA/u9IN4cytosV8cGBK/PJaolnk2HYnm09bRipAgAA",
+    "variants": [
+      {
+        "src": "/media/cases/data-agent/data-import-masked-poster-640-1aa7c4eb9e.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/cases/data-agent/data-import-masked-poster-960-0b9784af5b.webp",
+        "width": 960
+      }
+    ]
+  },
+  "/cases/data-agent/data-import-masked-still.webp": {
+    "width": 2400,
+    "height": 1348,
+    "preview": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAwCdASokABQAPxmEvVasqCakpWmZkCMJaQAAJrDOxAAA/u9IN4cytosV8cGBK/PJaolnk2HYnm09bRipAgAA",
+    "variants": [
+      {
+        "src": "/media/cases/data-agent/data-import-masked-still-640-1aa7c4eb9e.webp",
+        "width": 640
+      },
+      {
+        "src": "/media/cases/data-agent/data-import-masked-still-960-0b9784af5b.webp",
+        "width": 960
+      }
+    ]
   }
 }

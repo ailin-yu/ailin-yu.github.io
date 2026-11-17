@@ -200,6 +200,94 @@ const excluded = [
   {
     "path": "public/media/cases/aidbs/resource-options-still-960-9e0deafb63.webp",
     "sha256": "9e0deafb6333da2e1f1b6f5f4b77d4c3b26d766158ac68301049efe47fb8a916"
+  },
+  {
+    "path": "public/cases/data-agent/data-import.mp4",
+    "sha256": "dc7408037875b38a50427c8f195ced93b2075585dae237c96dc45068c4d4cbca"
+  },
+  {
+    "path": "public/cases/cloudai/genui-before-cropped.svg",
+    "sha256": "2ac41bdbce08093d51d05757490e4ea71679b7e1072acadb9c919ec8454d571f"
+  },
+  {
+    "path": "public/media/cases/cloudai/genui-before-cropped-640-5524d00fe9.webp",
+    "sha256": "5524d00fe9571e27db87e2d0ac0c6388fc5e625fd4089e6c26d88da294e4c5dc"
+  },
+  {
+    "path": "public/media/cases/cloudai/genui-before-cropped-960-31ba1bc6d2.webp",
+    "sha256": "31ba1bc6d205d8517c779cf8e3f2c85263ff5beffa637b5fdd9792ace389d05e"
+  },
+  {
+    "path": "public/cases/cloudai/genui-after.webp",
+    "sha256": "af2c4a8cbd2b0307ecd8eac73b9ea742e1318fbb5f79863125a9fbcee8cdb6b4"
+  },
+  {
+    "path": "public/media/cases/cloudai/genui-after-640-d8c96be5e4.webp",
+    "sha256": "d8c96be5e4347bf6cd70302bf1529934d633983760bad4cf559607df77cc634c"
+  },
+  {
+    "path": "public/media/cases/cloudai/genui-after-960-87817b2ca4.webp",
+    "sha256": "87817b2ca41872f90b172d17d0df57477cfd0a895a125d3a40c7503a8d3b272e"
+  },
+  {
+    "path": "public/cases/data-agent/data-import-poster.webp",
+    "sha256": "86186f7736ff349d350751fbc96e77aabd53df4b618ea84d4afbf5919a63dbfb"
+  },
+  {
+    "path": "public/media/cases/data-agent/data-import-poster-640-0af0a9f48a.webp",
+    "sha256": "0af0a9f48a21890d8f51ef9db71705d557c3a9b7fc13a0087456481518761500"
+  },
+  {
+    "path": "public/media/cases/data-agent/data-import-poster-960-5d8c2da1b6.webp",
+    "sha256": "5d8c2da1b6cdea2f940834d1275237c522b92c89867393fac7d406ba45fc0b8a"
+  },
+  {
+    "path": "public/cases/data-agent/data-import-still.webp",
+    "sha256": "2dbf08ba82db60f6048ee86ceb7e120fe9f966366b42d84a08638d8a028ad4c5"
+  },
+  {
+    "path": "public/media/cases/data-agent/data-import-still-640-ad4ede49ac.webp",
+    "sha256": "ad4ede49acf578c462eb94ffa2ce34881db539d01c83733c17ef6680feeec078"
+  },
+  {
+    "path": "public/media/cases/data-agent/data-import-still-960-ec3ccec197.webp",
+    "sha256": "ec3ccec197097b8a57074a2f96fbfec2a9f02c4a465b4c092ecdef3b8d4909f1"
+  },
+  {
+    "path": "public/cases/aidbs/diagnosis-v2.webp",
+    "sha256": "5cf26fa42d41ac9c5d7da2a5fc0be2fc9c0e8175480396d6fe1edf3ed805fa15"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-640-40584e1574.webp",
+    "sha256": "40584e1574d8e9006a1d6a9acec127cbf8df7d4221406b673252fd69513b9bcc"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-960-8a28e1ba75.webp",
+    "sha256": "8a28e1ba75f8a4423ee5e0b83eea33edce9861201131f7508d34bb015ab3260b"
+  },
+  {
+    "path": "public/cases/aidbs/diagnosis-v2-summary.webp",
+    "sha256": "dd91b1f753636ec665d161e90ba160932505792b315e6b756644e787fff415cb"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-summary-640-2f9ed869b0.webp",
+    "sha256": "2f9ed869b008a05f0bd1567a48991fa7844cacff91894167d40a7e94b3e48276"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-summary-800-55b91e0d3b.webp",
+    "sha256": "55b91e0d3b6ec4641958af1ef83faf4994f7a1d6171bfd01cc0edc2c76b268fc"
+  },
+  {
+    "path": "public/cases/aidbs/diagnosis-v2-action.webp",
+    "sha256": "f684303d4451ce0c336fb26b9b0a0a4319c45d84c077b35e3f310f79c50e8f23"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-action-640-52a5d20349.webp",
+    "sha256": "52a5d20349a75518d7602cd83e81ff208423380283f058a83afce8a42e0df466"
+  },
+  {
+    "path": "public/media/cases/aidbs/diagnosis-v2-action-800-299d3eb9de.webp",
+    "sha256": "299d3eb9de750a2a14ffcefd184f20f711b05acbca15868bc8fdd25071c2be3b"
   }
 ]
 const deniedPaths = new Set(excluded.map(file => file.path.slice('public/'.length)))
