@@ -19,7 +19,7 @@ export const homeProjects: FolderProject[] = [
     sheets: [
       { src: '/cases/data-agent/report.webp', label: '分析产物', alt: 'Data Agent 汇报中的真实分析报告产物' },
       { src: '/cases/data-agent/detail.webp', label: '任务协作', alt: 'Data Agent 任务交互的真实界面片段' },
-      { src: '/cases/data-agent/cover.webp', label: '分析工作台', alt: 'Data Agent 持续分析工作台的真实界面' },
+      { src: '/cases/data-agent/overview.webp', label: '分析工作台', alt: 'Data Agent 持续分析工作台的真实界面' },
     ],
   },
   {
@@ -27,9 +27,9 @@ export const homeProjects: FolderProject[] = [
     summary: '把设计规则转成 Agent 可以调用的 GenUI 组件。',
     role: '设计系统核心成员', topic: 'GenUI / 设计工程', caption: '设计声明 · 组件规则 · 工程资产',
     sheets: [
-      { src: '/cases/cloudai/runtime-structure.webp', label: '系统机制', alt: 'CloudAI 团队 Runtime 结构图的原始汇报局部' },
+      { src: '/cases/cloudai/genui-assets.webp', label: '系统机制', alt: 'CloudAI GenUI 共享设计资产的结构图' },
       { src: '/home/work/genui.webp', label: '业务交互', alt: 'CloudAI GenUI 的业务界面实例' },
-      { src: '/home/work/cloudai-system.webp', label: '组件资产', alt: 'CloudAI GenUI 真实组件目录' },
+      { src: '/cases/cloudai/agent-components.webp', label: '组件资产', alt: 'CloudAI GenUI 真实组件目录' },
     ],
   },
 ]

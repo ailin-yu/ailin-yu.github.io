@@ -1,11 +1,13 @@
 import { readdir, readFile, stat } from 'node:fs/promises'
 import { resolve, relative, extname } from 'node:path'
 import { gzipSync } from 'node:zlib'
+import { checkPublicAssets } from './check-public-assets.mjs'
 const root = resolve(import.meta.dirname, '..')
 async function files(dir) {
   const entries = await readdir(dir, { withFileTypes: true })
   return (await Promise.all(entries.map(e => e.isDirectory() ? files(resolve(dir, e.name)) : resolve(dir, e.name)))).flat()
 }
+await checkPublicAssets([resolve(root, 'public'), resolve(root, 'dist')])
 const all = await files(resolve(root, 'dist'))
 let total = 0
 const failures = []

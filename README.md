@@ -51,3 +51,7 @@ pnpm prepare:deploy
 本机所有被处理的原件与 SHA-256 清单保存在「2026工作/资料库/作品集部署整理/2026-11-08/」。历史参考文件继续由本地文档管理，不作为公开网站资源。
 
 部署说明参考：[GitHub Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
+## 发布资源检查
+
+仅发布网页所需资源。构建与导出会校验资源排除清单和 SHA-256，拒绝已排除资源及其改名副本进入 public/ 或 dist/。

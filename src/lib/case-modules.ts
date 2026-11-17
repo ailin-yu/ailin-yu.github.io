@@ -4,9 +4,9 @@ import type { PortfolioItem } from '@/content/portfolio-catalog'
 // reuses the loaded module; full project videos are never prefetched.
 export const caseModules = {
   template: () => import('@/pages/ProjectCasePage'),
-  aidbs: () => import('@/pages/AidbsCasePage'),
+  aidbs: () => import('@/pages/ProjectCasePage'),
   'data-agent': () => import('@/pages/DataAgentCasePage'),
-  cloudai: () => import('@/pages/CloudaiCasePage'),
+  cloudai: () => import('@/pages/ProjectCasePage'),
   research: () => import('@/pages/ResearchCasePage'),
   developer: () => import('@/pages/DeveloperCasePage'),
   student: () => import('@/pages/StudentCasePage'),
