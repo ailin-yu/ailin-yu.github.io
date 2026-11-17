@@ -38,7 +38,7 @@ export const aidbsCase: ProjectCase = {
         "在数据分析场景中，用户希望基于业务数据计算指标。以复购率分析为例，找到订单表，并不意味着已经明确复购率该怎么算：有效订单范围、按下单还是支付时间统计，以及怎样定义复购，都会改变结果。让 Agent 在识别到业务口径缺失时主动澄清，将影响结果的条件拆成逐步确认的 GenUI 卡片。",
         "每一步提供带含义说明的选项与默认建议，保留补充输入和返回修改。确认后，将用户选择带回任务，生成对应的计算公式与口径说明，让用户清楚结果建立在什么条件上。",
       ], media: [
-        { src: '/cases/aidbs/query-clarification-2x.mp4', reducedMotionSrc: '/cases/aidbs/query-clarification-still.webp', alt: "复购率口径澄清演示：逐步确认有效订单范围、时间基准与复购定义，再生成计算公式和口径说明", width: 2020, height: 1136 },
+        { src: '/cases/aidbs/query-clarification-2x-masked.mp4', reducedMotionSrc: '/cases/aidbs/query-clarification-2x-masked-still.webp', alt: "复购率口径澄清演示：逐步确认有效订单范围、时间基准与复购定义，再生成计算公式和口径说明", width: 2020, height: 1136 },
       ] },
       { id: 'aidbs-genui-judgment', title: '让诊断建议直接衔接执行', outlineLabel: '诊断与执行闭环', paragraphs: [
         "数据库运维中，DBA 往往需要在多个监控大盘间切换、逐层下钻，关联指标与慢 SQL 来定位异常。通过 GenUI，将 Agent 的诊断结论、相关监控趋势与建议操作组织在同一任务链路中。以 CPU 过载为例，诊断依据与 SQL 限流卡片相邻呈现，便于 DBA 理解原因、核对参数与风险，减少跨页面查找和拼接信息的负担。",
@@ -50,7 +50,7 @@ export const aidbsCase: ProjectCase = {
         "数据库的参数配置复杂，具有较高的专业门槛。用户提出「推荐一个 MySQL 数据库」时，往往还不清楚该如何选择参数。通过意图澄清卡片，引导用户说出业务用途、部署地域和使用规模等需求，再由 Agent 据此匹配合适的资源规格，并说明推荐理由。",
         "将推荐、经济与内存余量方案按价格、架构和配置并列呈现，突出差异与适用场景，共同配置集中展示。选用入口直接放在方案卡片内，让需求澄清、权衡比较与方案选择在同一对话中衔接。",
       ], media: [
-        { src: '/cases/aidbs/resource-options.mp4', reducedMotionSrc: '/cases/aidbs/resource-options-still.webp', alt: "数据库资源推荐演示：确认业务用途、地域与规模，展示推荐理由、三种方案比较及卡片内选用入口", width: 2180, height: 1226 },
+        { src: '/cases/aidbs/resource-options-masked.mp4', reducedMotionSrc: '/cases/aidbs/resource-options-masked-still.webp', alt: "数据库资源推荐演示：确认业务用途、地域与规模，展示推荐理由、三种方案比较及卡片内选用入口", width: 2180, height: 1226 },
       ] },
     ] },
   ] },
