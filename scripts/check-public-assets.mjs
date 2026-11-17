@@ -168,6 +168,38 @@ const excluded = [
   {
     "path": "public/media/cases/aidbs/resource-options-960-20c334df59.webp",
     "sha256": "20c334df5990c507fddb8a93c0aac059959b7be22981604631727cf8e5154ba1"
+  },
+  {
+    "path": "public/cases/aidbs/query-clarification-2x.mp4",
+    "sha256": "739bc3fcd3e27d6371bf435a925b03425f68efdb573d1846771b4357de4507f3"
+  },
+  {
+    "path": "public/cases/aidbs/query-clarification-still.webp",
+    "sha256": "7dd6db06feaa6d5916b119284356e602aab01a7a4efef2e5f24ea7dca4b861ac"
+  },
+  {
+    "path": "public/cases/aidbs/resource-options-still.webp",
+    "sha256": "4dffc25fe010b4a3532b52161112bb44cf7456e242a859c0d2584c34886aa616"
+  },
+  {
+    "path": "public/cases/aidbs/resource-options.mp4",
+    "sha256": "ee79209e22090a7adf7f31899c83a617360a3b1a7485bb7fe27a3df0149b3d29"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-clarification-still-640-e5baa71cf8.webp",
+    "sha256": "e5baa71cf8b24611576d2c29e2e0e91f8c62164c86d3b6dcb9bc756aec236140"
+  },
+  {
+    "path": "public/media/cases/aidbs/query-clarification-still-960-82cc8f6ebb.webp",
+    "sha256": "82cc8f6ebb09596958977976b1aa0a2880588dbeb39f445f09369ea2e02cb5e9"
+  },
+  {
+    "path": "public/media/cases/aidbs/resource-options-still-640-401a6c612e.webp",
+    "sha256": "401a6c612eadc1e5efe31cf83635f6baaac0a02465408a7c6dfe9bc5e67721d9"
+  },
+  {
+    "path": "public/media/cases/aidbs/resource-options-still-960-9e0deafb63.webp",
+    "sha256": "9e0deafb6333da2e1f1b6f5f4b77d4c3b26d766158ac68301049efe47fb8a916"
   }
 ]
 const deniedPaths = new Set(excluded.map(file => file.path.slice('public/'.length)))

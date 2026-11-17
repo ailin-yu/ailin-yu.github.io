@@ -25,11 +25,6 @@ const humanCards = [
   { src: 'human-confirm.webp', alt: 'SQL 执行确认卡片', width: 2656, height: 1792, centerY: 880, visibleHeight: 1696 },
 ]
 
-const patentOutcomes = [
-  { title: '发明专利成果', detail: '第一发明人' },
-  { title: '发明专利成果', detail: '第一发明人' },
-  { title: '发明专利成果', detail: '' },
-]
 
 const mobileScreens = [
   { src: 'mobile-home.png', alt: '移动端首页：通过对话或推荐任务开始分析' },
@@ -90,7 +85,6 @@ export default function DataAgentCasePage() {
                 <p className="da-design-copy">Agent 过程透明度研究发表于 CSCW Companion 2025（第一作者）；产品设计探索同时沉淀了 3 项发明专利。</p>
                 <a className="da-result-research-link" href={caseHref('cscw')}>查看 Agent 过程透明度研究<span aria-hidden="true">→</span></a>
               </div>
-              <ul className="da-result-patents" aria-label="发明专利名称与状态">{patentOutcomes.map(patent => <li key={patent.title}><h4>{patent.title}</h4><p>{patent.detail}</p></li>)}</ul>
             </div>
           </section>
   </ProjectCaseLayout>
