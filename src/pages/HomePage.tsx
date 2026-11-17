@@ -4,7 +4,7 @@ import { useInView, useReducedMotion } from 'motion/react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/portfolio/ThemeProvider'
 import { AsciiParticles } from '@/components/home/AsciiParticles'
-import { homeDesignPlants, homeDesignProjects, homeHeroText } from '@/content/home-design'
+import { homeDesignPlants, homeDesignProjects, homeExperienceAnchors, homeHeroText } from '@/content/home-design'
 import { warmCase } from '@/lib/case-modules'
 import { beginProjectEntry } from '@/lib/project-entry-transition'
 import { DecryptedChip, DecryptedLabel, HoverPortrait, RotatingTool } from '@/components/home/HeroInteractions'
@@ -115,12 +115,12 @@ function HomeExperience() {
     <div className="figma-experience-scroll" role="region" aria-label="教育与工作经历" tabIndex={0}><div className="figma-experience-scene">
       {homeDesignPlants.map((plant, stage) => <div key={plant.name} className="figma-plant" style={{ '--plant-x': plant.x, '--plant-width': plant.width } as CSSProperties} role="img" aria-label={`桔梗成长阶段：${plant.name}，由 ASCII 粒子绘制`}><div className="figma-plant-fallback" style={{ backgroundSize: `${1774 * plant.scaleX * 100}% 100%`, backgroundPosition: `${plant.offsetX / (1 - 1774 * plant.scaleX) * 100}% 0` }} /><AsciiParticles variant="flower" stage={stage} flowerTone={flowerTone} /></div>)}
       <svg className="figma-experience-labels" viewBox="0 0 1440 714" role="img" aria-label="2017至2021 重庆大学工业设计学士；2021至2024 浙江大学工业设计工程硕士；2022 腾讯 IEG 交互设计实习；2023 阿里云体验设计实习；2024年4月至今 阿里云体验设计专家。">
-        <path className="figma-timeline-line" d="M0 370H1440" />{[126, 361, 596, 831, 1066].map(x => <rect key={x} className="figma-timeline-dot" x={x} y="367" width="6" height="6" />)}{[596, 831, 1066].map(x => <g key={x}><path className="figma-timeline-stem" d={`M${x + 3} 373V434`} /><rect className="figma-timeline-work-dot" x={x} y="430" width="6" height="6" /></g>)}
-        <ExperienceReveal x={120}><text className="figma-experience-date" y="399.19">2017 - 2021</text><text className="figma-experience-name" y="439.58">重庆大学</text><text className="figma-experience-role" y="473.76">工业设计 学士</text></ExperienceReveal>
-        <ExperienceReveal x={355}><text className="figma-experience-date" y="399.19">2021 - 2024</text><text className="figma-experience-name" y="439.58">浙江大学</text><text className="figma-experience-role" y="473.76">工业设计工程 硕士</text></ExperienceReveal>
-        <ExperienceReveal x={590}><text className="figma-experience-date" y="463.19">2022</text><text className="figma-experience-name" y="503.58" xmlSpace="preserve">腾讯 <tspan className="hero-latin" dy=".82">IEG</tspan></text><text className="figma-experience-role" y="537.76">交互设计 实习</text></ExperienceReveal>
-        <ExperienceReveal x={825}><text className="figma-experience-date" y="463.19">2023</text><text className="figma-experience-name" y="503.58">阿里云</text><text className="figma-experience-role" y="537.76">体验设计 实习</text></ExperienceReveal>
-        <ExperienceReveal x={1060}><text className="figma-experience-date" y="463.19">2024.04 - now</text><text className="figma-experience-name" y="503.58">阿里云</text><text className="figma-experience-role" y="537.76">体验设计专家</text></ExperienceReveal>
+        <path className="figma-timeline-line" d="M0 370H1440" />{homeExperienceAnchors.map(x => <rect key={x} className="figma-timeline-dot" x={x + 6} y="367" width="6" height="6" />)}{homeExperienceAnchors.slice(2).map(x => <g key={x}><path className="figma-timeline-stem" d={`M${x + 9} 373V434`} /><rect className="figma-timeline-work-dot" x={x + 6} y="430" width="6" height="6" /></g>)}
+        <ExperienceReveal x={homeExperienceAnchors[0]}><text className="figma-experience-date" y="399.19">2017 - 2021</text><text className="figma-experience-name" y="439.58">重庆大学</text><text className="figma-experience-role" y="473.76">工业设计 学士</text></ExperienceReveal>
+        <ExperienceReveal x={homeExperienceAnchors[1]}><text className="figma-experience-date" y="399.19">2021 - 2024</text><text className="figma-experience-name" y="439.58">浙江大学</text><text className="figma-experience-role" y="473.76">工业设计工程 硕士</text></ExperienceReveal>
+        <ExperienceReveal x={homeExperienceAnchors[2]}><text className="figma-experience-date" y="463.19">2022</text><text className="figma-experience-name" y="503.58" xmlSpace="preserve">腾讯 <tspan className="hero-latin" dy=".82">IEG</tspan></text><text className="figma-experience-role" y="537.76">交互设计 实习</text></ExperienceReveal>
+        <ExperienceReveal x={homeExperienceAnchors[3]}><text className="figma-experience-date" y="463.19">2023</text><text className="figma-experience-name" y="503.58">阿里云</text><text className="figma-experience-role" y="537.76">体验设计 实习</text></ExperienceReveal>
+        <ExperienceReveal x={homeExperienceAnchors[4]}><text className="figma-experience-date" y="463.19">2024.04 - now</text><text className="figma-experience-name" y="503.58">阿里云</text><text className="figma-experience-role" y="537.76">体验设计专家</text></ExperienceReveal>
       </svg>
     </div></div>
   </section>

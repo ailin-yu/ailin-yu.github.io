@@ -34,11 +34,15 @@ export const homeDesignProjects = [
   { slug: 'future-vehicles', menuDescription: '未来交通工具概念设计', title: 'Future Vehicles', subtitle: 'Concept Design', cover: { src: '07.webp', width: 2448, height: 1728, position: '35% center' }, kind: 'template' },
 ] as const
 
+// Rebalanced for the shorter public role: equal intervals and similar end margins.
+// Labels, timeline nodes and plant roots share these anchors.
+export const homeExperienceAnchors = [120, 396, 672, 948, 1224] as const
+
 export const homeDesignPlants = [
-  { x: 93, width: 73, scaleX: .00464624, offsetX: -.00757576, name: '小苗' },
-  { x: 326, width: 92, scaleX: .0036946, offsetX: -.789157, name: '花苞' },
-  { x: 540, width: 126, scaleX: .00268993, offsetX: -1.14474, name: '初开' },
-  { x: 774, width: 135, scaleX: .00251354, offsetX: -1.93033, name: '舒展' },
-  { x: 985, width: 205, scaleX: .00164866, offsetX: -1.92204, name: '成丛' },
+  { x: homeExperienceAnchors[0] - 27, width: 73, scaleX: .00464624, offsetX: -.00757576, name: '小苗' },
+  { x: homeExperienceAnchors[1] - 29, width: 92, scaleX: .0036946, offsetX: -.789157, name: '花苞' },
+  { x: homeExperienceAnchors[2] - 50, width: 126, scaleX: .00268993, offsetX: -1.14474, name: '初开' },
+  { x: homeExperienceAnchors[3] - 51, width: 135, scaleX: .00251354, offsetX: -1.93033, name: '舒展' },
+  { x: homeExperienceAnchors[4] - 75, width: 205, scaleX: .00164866, offsetX: -1.92204, name: '成丛' },
 ] as const
 
