@@ -3,7 +3,7 @@
 export const careerStops = [
   { id: 'tencent', company: '腾讯光子', date: '2022.06—2022.12', role: '交互设计实习', note: '参与跨端游戏系统交互，与视觉和研发协作推进实现。', logo: '/brands/tencent-blue.png', darkLogo: '/brands/tencent-white.png' },
   { id: 'aliyun-intern', company: '阿里云', date: '2023.06—2023.10', role: '体验设计实习', note: '进入企业级产品设计，理解技术能力与用户任务之间的关系。', logo: '/brands/alibaba-cloud-orange.svg' },
-  { id: 'aliyun', company: '阿里云', date: '2024.04—至今', role: '体验设计师 · 数据库工具线设计负责人', note: '负责 AIDBS、Data Agent 体验设计；作为 CloudAI 核心成员主导 GenUI。', logo: '/brands/alibaba-cloud-orange.svg' },
+  { id: 'aliyun', company: '阿里云', date: '2024.04—至今', role: '体验设计专家', note: '', logo: '/brands/alibaba-cloud-orange.svg' },
 ] as const
 
 export const playbookLinks = { read: 'https://alibaba-cloud-design.github.io/vibe-designing-playbook/', source: 'https://github.com/Alibaba-Cloud-Design/vibe-designing-playbook' }
