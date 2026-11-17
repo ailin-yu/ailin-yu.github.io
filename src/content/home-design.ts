@@ -34,9 +34,9 @@ export const homeDesignProjects = [
   { slug: 'future-vehicles', menuDescription: '未来交通工具概念设计', title: 'Future Vehicles', subtitle: 'Concept Design', cover: { src: '07.webp', width: 2448, height: 1728, position: '35% center' }, kind: 'template' },
 ] as const
 
-// Rebalanced for the shorter public role: equal intervals and similar end margins.
-// Labels, timeline nodes and plant roots share these anchors.
-export const homeExperienceAnchors = [120, 396, 672, 948, 1224] as const
+// Five equal 264px columns from x=120 to the scene edge at x=1440.
+// Include the final column when spacing labels, timeline nodes and plant roots.
+export const homeExperienceAnchors = [120, 384, 648, 912, 1176] as const
 
 export const homeDesignPlants = [
   { x: homeExperienceAnchors[0] - 27, width: 73, scaleX: .00464624, offsetX: -.00757576, name: '小苗' },
